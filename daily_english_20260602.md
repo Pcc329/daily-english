@@ -1,96 +1,573 @@
-資料庫工程師的一天 — 英文口說練習稿
-日期：2026-06-02 難度：TOEIC 700 格式：獨白式（適合錄音、面試練習、Vlog） 主題：第五輪測試、資料庫診斷、策略修正、規格交付
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日英文練習 — 2026/06/02</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --bg-card: #ffffff;
+    --bg-dark: #1a1917;
+    --text: #1a1917;
+    --text-muted: #6b6860;
+    --text-light: #9b9890;
+    --accent: #c84b2f;
+    --accent-light: #f5ebe7;
+    --accent2: #2d6a4f;
+    --accent2-light: #e8f5ee;
+    --border: #e8e4dc;
+    --shadow: 0 2px 12px rgba(26,25,23,0.08);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+  header {
+    background: var(--text);
+    color: #f7f5f0;
+    padding: 28px 24px 22px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #9b9890;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #f7f5f0;
+  }
+  .speed-bar {
+    background: #2a2926;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .speed-bar label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #9b9890;
+    letter-spacing: 0.06em;
+  }
+  .speed-bar input[type=range] {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 3px;
+    max-width: 160px;
+  }
+  .speed-bar span {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #f7f5f0;
+    min-width: 32px;
+  }
+  .main { max-width: 680px; margin: 0 auto; padding: 24px 16px 0; }
 
-中文版
-今天是週二，但對這個專案來說是關鍵的一天，因為我做了一個「踩煞車」的決定。
+  /* Section tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 8px 4px;
+    border: none;
+    background: transparent;
+    border-radius: 7px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .tab-btn.active {
+    background: var(--text);
+    color: #f7f5f0;
+    font-weight: 500;
+  }
 
-上午我完成了第五輪模擬測試。這是歷輪表現最好的一次：100 個情境裡，零個缺口、零個篩選失效，有效問答 98 筆，平均回答長度 696 字。我也把測試腳本升級到 v3，加了一個 AI 評分功能——讓 Claude 從三個維度（相關性、可行性、完整性）幫每個回答打分數，再寫回資料庫。
+  /* Section panels */
+  .panel { display: none; }
+  .panel.active { display: block; }
 
-不過今天真正重要的事，是一個發現。我原本打算花一週時間，幫資料庫裡的每個方案標上「適合哪個產業」，這樣搜尋就能依產業給出不同結果。但在動手之前，我先做了一次資料庫診斷——結果發現這個假設是錯的。
+  /* Paragraph cards */
+  .para-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 18px 14px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .para-text {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .para-text .word {
+    cursor: pointer;
+    border-bottom: 1px dotted transparent;
+    transition: border-color 0.15s, color 0.15s;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .para-text .word:hover {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+  .para-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .btn-play {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-play:hover { background: var(--accent); color: white; }
+  .btn-play.playing { background: var(--accent); color: white; }
+  .btn-play svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .hint {
+    font-size: 11px;
+    color: var(--text-light);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
 
-資料顯示，多數方案本質上就是通用的：一套中小企業雲端防毒，賣給餐廳和賣給銀行就是同一套產品。資料庫裡根本沒有「金融專屬資安方案」這種東西。所以就算我標了產業，硬篩之後只會把搜尋結果清空，反而製造缺口。
+  /* Vocab cards */
+  .vocab-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .vocab-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 12px;
+  }
+  .vocab-word {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .vocab-pos {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 3px;
+  }
+  .vocab-phonetic {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .vocab-phonetic:hover { background: var(--accent); color: white; }
+  .vocab-zh {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .vocab-note {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+    border-left: 2px solid var(--accent-light);
+    padding-left: 10px;
+  }
+  .vocab-example {
+    margin-top: 8px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent2);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .vocab-example:hover { text-decoration: underline; }
 
-於是我決定踩煞車，放棄原本的標記計畫，改走另一條路：同一批候選方案，依產業關注點做「軟性排序」，把相關的方案浮到前面，但不刪掉任何一筆。這樣結果筆數不變，順序卻會隨產業改變。下午我把這個新方向寫成規格書，交給 Codex 執行。
+  /* Key sentences */
+  .sentence-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .sentence-en {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 6px;
+    cursor: pointer;
+  }
+  .sentence-en:hover { color: var(--accent2); }
+  .sentence-zh {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .sentence-note {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
 
-我學到的一課是：在投入大量工程之前，先花一小時診斷，可能幫你省下一整週的白工。懸崖勒馬，比硬著頭皮做下去更專業。
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text);
+    color: #f7f5f0;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    opacity: 0;
+    transition: all 0.25s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 
-English Version
-Today is Tuesday, but it was a pivotal day for the project, because I made a decision to "hit the brakes."
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
 
-In the morning, I completed the fifth round of simulation testing. It was the best round so far: across 100 scenarios, zero gaps, zero filtering failures, 98 valid answers, and an average answer length of 696 characters. I also upgraded the test script to v3, adding an AI scoring feature — it lets Claude grade each answer across three dimensions, relevance, actionability, and completeness, and writes the scores back to the database.
+<header>
+  <div class="meta">2026.06.02 — TOEIC 700 — Day 4</div>
+  <h1>資料庫工程師的一天</h1>
+</header>
 
-But the truly important thing today was a discovery. I had originally planned to spend a week tagging every solution in the database with the industries it fits, so the search could return different results per industry. But before diving in, I ran a database diagnostic first — and it turned out my assumption was wrong.
+<div class="speed-bar">
+  <label>語速</label>
+  <input type="range" id="speedRange" min="0.5" max="1.5" step="0.1" value="0.9">
+  <span id="speedVal">0.9×</span>
+</div>
 
-The data showed that most solutions are inherently generic: a cloud antivirus tool for small businesses is the same product whether you sell it to a restaurant or a bank. The database simply does not contain anything like a "finance-specific security solution." So even if I tagged the industries, hard-filtering by them would only empty out the search results and create gaps instead.
+<div class="main">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('reading')">朗讀練習</button>
+    <button class="tab-btn" onclick="switchTab('vocab')">術語發音</button>
+    <button class="tab-btn" onclick="switchTab('sentences')">核心句型</button>
+  </div>
 
-So I decided to hit the brakes, abandon the original tagging plan, and take a different path: keep the same pool of candidate solutions, but apply a "soft ranking" based on each industry's concerns — floating the relevant solutions to the top without removing any. This way the result count stays the same, but the order shifts by industry. In the afternoon, I wrote this new direction into a spec and handed it off to Codex.
+  <!-- Panel 1: Reading -->
+  <div class="panel active" id="panel-reading">
+    <p class="section-label">點單字聽發音 · 點按鈕聽整段</p>
 
-The lesson I took away: spending one hour on diagnosis before committing to heavy engineering can save you an entire week of wasted work. Knowing when to pull back is more professional than stubbornly pushing forward.
+    <div class="para-card">
+      <div class="para-text" id="p1"></div>
+      <div class="para-actions">
+        <button class="btn-play" onclick="playPara(0)">
+          <svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 13,8 3,14"/></svg>
+          聽整段
+        </button>
+        <span class="hint">或點單字單獨聽</span>
+      </div>
+    </div>
 
-📖 資料庫工程師必備術語與自然發音
-1. Diagnostic (n./adj.) 診斷 / 診斷的
+    <div class="para-card">
+      <div class="para-text" id="p2"></div>
+      <div class="para-actions">
+        <button class="btn-play" onclick="playPara(1)">
+          <svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 13,8 3,14"/></svg>
+          聽整段
+        </button>
+      </div>
+    </div>
 
-自然發音：dye-ag-NOS-tik（/ˌdaɪ.əɡˈnɒs.tɪk）
+    <div class="para-card">
+      <div class="para-text" id="p3"></div>
+      <div class="para-actions">
+        <button class="btn-play" onclick="playPara(2)">
+          <svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 13,8 3,14"/></svg>
+          聽整段
+        </button>
+      </div>
+    </div>
 
-專業解析：在投入開發前先檢查資料或系統現況。"I ran a diagnostic first" 是工程師展現嚴謹的關鍵句，代表你會先驗證假設再動手。
+    <div class="para-card">
+      <div class="para-text" id="p4"></div>
+      <div class="para-actions">
+        <button class="btn-play" onclick="playPara(3)">
+          <svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 13,8 3,14"/></svg>
+          聽整段
+        </button>
+      </div>
+    </div>
 
-2. Assumption (n.) 假設
+    <div class="para-card">
+      <div class="para-text" id="p5"></div>
+      <div class="para-actions">
+        <button class="btn-play" onclick="playPara(4)">
+          <svg viewBox="0 0 16 16" fill="currentColor"><polygon points="3,2 13,8 3,14"/></svg>
+          聽整段
+        </button>
+      </div>
+    </div>
+  </div>
 
-自然發音：uh-SUMP-shun（/əˈsʌmp.ʃən/）
+  <!-- Panel 2: Vocab -->
+  <div class="panel" id="panel-vocab">
+    <p class="section-label">點音標聽發音 · 點例句聽完整句</p>
 
-專業解析：尚未驗證的前提。"My assumption was wrong" 在技術討論中是很有力的一句——願意承認假設錯誤，是資深工程師的特質。
+    <div id="vocab-list"></div>
+  </div>
 
-3. Inherently (adv.) 本質上 / 天生地
+  <!-- Panel 3: Sentences -->
+  <div class="panel" id="panel-sentences">
+    <p class="section-label">點英文句子聽朗讀</p>
+    <div id="sentence-list"></div>
+  </div>
+</div>
 
-自然發音：in-HAIR-ent-lee（/ɪnˈhɪə.rənt.li/）
+<div class="toast" id="toast"></div>
 
-專業解析：強調事物的根本性質。"Most solutions are inherently generic" 比 "are generic" 更精確，點出「這是產品的本質，不是資料沒做好」。
+<script>
+const paragraphs = [
+  "Today is Tuesday, but it was a pivotal day for the project, because I made a decision to hit the brakes.",
+  "In the morning, I completed the fifth round of simulation testing. It was the best round so far: across 100 scenarios, zero gaps, zero filtering failures, 98 valid answers, and an average answer length of 696 characters. I also upgraded the test script to v3, adding an AI scoring feature — it lets Claude grade each answer across three dimensions, relevance, actionability, and completeness, and writes the scores back to the database.",
+  "But the truly important thing today was a discovery. I had originally planned to spend a week tagging every solution in the database with the industries it fits, so the search could return different results per industry. But before diving in, I ran a database diagnostic first — and it turned out my assumption was wrong.",
+  "The data showed that most solutions are inherently generic: a cloud antivirus tool for small businesses is the same product whether you sell it to a restaurant or a bank. The database simply does not contain anything like a finance-specific security solution. So even if I tagged the industries, hard-filtering by them would only empty out the search results and create gaps instead.",
+  "So I decided to hit the brakes, abandon the original tagging plan, and take a different path: keep the same pool of candidate solutions, but apply a soft ranking based on each industry's concerns — floating the relevant solutions to the top without removing any. The lesson I took away: spending one hour on diagnosis before committing to heavy engineering can save you an entire week of wasted work. Knowing when to pull back is more professional than stubbornly pushing forward."
+];
 
-4. Hard-filter / Soft ranking (v./n.) 硬篩 / 軟性排序
+const vocabData = [
+  {
+    word: "Diagnostic",
+    pos: "n. / adj.",
+    zh: "診斷 / 診斷的",
+    phonetic: "dye-ag-NOS-tik",
+    ipa: "/ˌdaɪ.əɡˈnɒs.tɪk/",
+    note: "在投入開發前先檢查資料或系統現況。展現嚴謹的關鍵字。",
+    example: "I ran a diagnostic first."
+  },
+  {
+    word: "Assumption",
+    pos: "n.",
+    zh: "假設",
+    phonetic: "uh-SUMP-shun",
+    ipa: "/əˈsʌmp.ʃən/",
+    note: "尚未驗證的前提。願意承認假設錯誤是資深工程師的特質。",
+    example: "My assumption was wrong."
+  },
+  {
+    word: "Inherently",
+    pos: "adv.",
+    zh: "本質上、天生地",
+    phonetic: "in-HAIR-ent-lee",
+    ipa: "/ɪnˈhɪə.rənt.li/",
+    note: "強調事物的根本性質，比 simply 更精確有力。",
+    example: "Most solutions are inherently generic."
+  },
+  {
+    word: "Hard-filter",
+    pos: "v.",
+    zh: "硬篩",
+    phonetic: "HARD FIL-ter",
+    ipa: "/hɑːrd ˈfɪl.tər/",
+    note: "會「移除」不符合條件的資料，風險是清空結果。",
+    example: "Hard-filtering would empty out the results."
+  },
+  {
+    word: "Soft ranking",
+    pos: "n.",
+    zh: "軟性排序",
+    phonetic: "SOFT RANK-ing",
+    ipa: "/sɒft ˈræŋ.kɪŋ/",
+    note: "只「重排」順序、不移除資料。搜尋系統設計的核心概念。",
+    example: "Apply a soft ranking based on industry concerns."
+  },
+  {
+    word: "Candidate pool",
+    pos: "n.",
+    zh: "候選池",
+    phonetic: "KAN-di-dut POOL",
+    ipa: "/ˈkæn.dɪ.dət puːl/",
+    note: "經初步篩選後待排序的資料集合。",
+    example: "Keep the same candidate pool but re-rank it."
+  },
+  {
+    word: "Hand off",
+    pos: "phrasal v.",
+    zh: "交付、轉交",
+    phonetic: "HAND OFF",
+    ipa: "/hænd ɒf/",
+    note: "把工作成果轉交給下一個人或系統，比 give 更專業。",
+    example: "I handed off the spec to Codex."
+  }
+];
 
-自然發音：HARD FIL-ter（/hɑːrd ˈfɪl.tər/）｜SOFT RANK-ing（/sɒft ˈræŋ.kɪŋ/）
+const sentenceData = [
+  {
+    en: "Before diving in, I ran a diagnostic first — and my assumption turned out to be wrong.",
+    zh: "在動手之前，我先做了診斷——結果發現我的假設是錯的。",
+    note: "展現嚴謹工作流程的黃金句型。面試或 review 說出來，代表你會先驗證假設再執行。"
+  },
+  {
+    en: "Hard-filtering would only empty out the results, so I switched to soft ranking instead.",
+    zh: "硬篩只會清空結果，所以我改用軟性排序。",
+    note: "說明技術權衡（trade-off）的標準句。點出副作用，再說明替代方案。"
+  },
+  {
+    en: "Knowing when to pull back is more professional than stubbornly pushing forward.",
+    zh: "懂得何時收手，比硬著頭皮做下去更專業。",
+    note: "適合週報結語、retro 會議、面試談「你最近一個好決定」。"
+  }
+];
 
-專業解析：兩種截然不同的策略。Hard-filter 會「移除」不符合的資料（風險：清空結果）；soft ranking 只「重排」順序、不移除。這組對比在搜尋系統設計中極常用。
+let currentRate = 0.9;
+let currentUtterance = null;
 
-5. Candidate pool (n.) 候選池
+document.getElementById('speedRange').addEventListener('input', function() {
+  currentRate = parseFloat(this.value);
+  document.getElementById('speedVal').textContent = currentRate.toFixed(1) + '×';
+});
 
-自然發音：KAN-di-dut POOL（/ˈkæn.dɪ.dət puːl/）
+function speak(text, onEnd) {
+  if (!('speechSynthesis' in window)) {
+    showToast('此瀏覽器不支援語音合成');
+    return;
+  }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = currentRate;
+  u.pitch = 1;
+  if (onEnd) u.onend = onEnd;
+  currentUtterance = u;
+  window.speechSynthesis.speak(u);
+}
 
-專業解析：搜尋或推薦系統中，經初步篩選後待排序的資料集合。"Keep the same candidate pool but re-rank it" 是描述排序策略的標準說法。
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
 
-6. Hand off (phrasal v.) 交付 / 轉交
+function buildClickableText(text) {
+  return text.split(/(\s+)/).map(part => {
+    const clean = part.replace(/[^a-zA-Z'-]/g, '');
+    if (clean.length > 0) {
+      return `<span class="word" onclick="speak('${clean.replace(/'/g,"\\'")}'); showToast('${clean}')">${part}</span>`;
+    }
+    return part;
+  }).join('');
+}
 
-自然發音：HAND OFF（/hænd ɒf/）
+paragraphs.forEach((p, i) => {
+  const el = document.getElementById('p' + (i + 1));
+  if (el) el.innerHTML = buildClickableText(p);
+});
 
-專業解析：把工作成果轉交給下一個人或系統。"I handed off the spec to Codex" 描述工作流程銜接，比 "gave" 更專業、更有流程感。
+function playPara(idx) {
+  const btns = document.querySelectorAll('.btn-play');
+  btns.forEach(b => b.classList.remove('playing'));
+  const btn = document.querySelectorAll('#panel-reading .btn-play')[idx];
+  if (btn) btn.classList.add('playing');
+  speak(paragraphs[idx], () => {
+    if (btn) btn.classList.remove('playing');
+  });
+}
 
-🛠️ 核心句型（Data Engineer Style）
-① "Before diving in, I ran a diagnostic first — and my assumption turned out to be wrong." （在動手之前，我先做了診斷——結果發現我的假設是錯的。）
+const vocabList = document.getElementById('vocab-list');
+vocabData.forEach(v => {
+  vocabList.innerHTML += `
+    <div class="vocab-card">
+      <div class="vocab-header">
+        <div>
+          <div class="vocab-word">${v.word}</div>
+          <div class="vocab-pos">${v.pos} &nbsp;·&nbsp; ${v.ipa}</div>
+        </div>
+        <div class="vocab-phonetic" onclick="speak('${v.word}'); showToast('${v.word}')">${v.phonetic} ▶</div>
+      </div>
+      <div class="vocab-zh">${v.zh}</div>
+      <div class="vocab-note">${v.note}</div>
+      <div class="vocab-example" onclick="speak('${v.example.replace(/'/g,"\\'")}'); showToast('playing...')">
+        ▶ "${v.example}"
+      </div>
+    </div>`;
+});
 
-用法：展現嚴謹工作流程的黃金句型。在 review 或面試說出來，會讓人覺得你「先驗證再執行」。"Turned out to be wrong" 是承認錯誤又不失專業的說法。
+const sentenceList = document.getElementById('sentence-list');
+sentenceData.forEach(s => {
+  sentenceList.innerHTML += `
+    <div class="sentence-card">
+      <div class="sentence-en" onclick="speak('${s.en.replace(/'/g,"\\'")}'); showToast('playing...')">${s.en} ▶</div>
+      <div class="sentence-zh">${s.zh}</div>
+      <div class="sentence-note">${s.note}</div>
+    </div>`;
+});
 
-② "Hard-filtering would only empty out the results, so I switched to soft ranking instead." （硬篩只會清空結果，所以我改用軟性排序。）
-
-用法：說明技術權衡（trade-off）的標準句。點出某做法的副作用，再說明替代方案，是系統設計討論的核心句式。
-
-③ "Knowing when to pull back is more professional than stubbornly pushing forward." （懂得何時收手，比硬著頭皮做下去更專業。）
-
-用法：總結「踩煞車」決策的金句。適合週報結語、retro 會議、面試談「你最近一個好決定」。傳達成熟的工程判斷力。
-
-口說練習建議
-1.
-第一遍：對照中文版，理解「踩煞車」這個決策的脈絡
-
-2.
-第二遍：只看英文版，大聲朗讀，注意 "diagnostic"、"inherently"、"assumption" 的重音
-
-3.
-第三遍：蓋住稿子，用自己的話說出「我今天為什麼決定踩煞車」
-
-4.
-進階練習：用這篇模擬向主管口頭說明「為什麼放棄原計畫」，限時 90 秒講清楚「假設 → 診斷 → 修正」三步
-
-稿件由 Claude 產出，2026-06-02 系列：資料庫工程師日常英文口說練習 — Day 4（週二・策略修正）
-
-
-Search
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  event.target.classList.add('active');
+  window.speechSynthesis.cancel();
+}
+</script>
+</body>
+</html>
