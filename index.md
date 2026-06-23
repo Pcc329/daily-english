@@ -17,6 +17,7 @@
 | [06/11 週四](daily_english_20260611.html) | 資料除錯・儀表板換色・簡報製作 |
 | [06/16 週一](daily_english_20260616.html) | AI Agent 設計・命名討論・Past Simple 句型練習 |
 | [06/22 週一](daily_english_20260622.html) | 汙染防護・Haiku 省成本・Past Simple 句型練習 |
+| [06/23 週二](daily_english_20260623.html) | 交接盤點・資料調查・Why/Because 句型 |
 
 ---
 
