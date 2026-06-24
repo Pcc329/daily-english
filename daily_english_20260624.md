@@ -1,0 +1,244 @@
+---
+layout: null
+---
+
+每日英文練習 | 2026-06-24 GitHub 工作流 × PR 流程 × Headway U4 延伸
+
+# 每日英文練習
+
+資料庫工程師的英文口說復健 · Daily Speaking Practice
+
+Headway U4 句型  
+Past Simple / Why and Because / We decided to / Did you…?
+
+[返回目錄](./index.md)  
+[View on GitHub](https://github.com/Pcc329/daily-english)
+
+2026.06.24 — Day 10
+
+用英文說明：我今天如何把內容整理成網站、建立入口，並確認未來維持 PR 流程。
+
+GitHub workflow · Daily English branch · PR review × Why / Because 句型
+
+branch workflow / pull request / review / publish / daily practice
+
+---
+
+## 今日文法重點 — Headway Elementary Unit 4 延伸
+
+✅ 過去式工作句：  
+I created a new HTML page for the report.
+
+✅ 決策句：  
+We decided to keep the same workflow.
+
+✅ Why / Because：  
+Why did we use a pull request?  
+Because we wanted to review the changes before merging them.
+
+✅ 否定句：  
+We didn’t push directly to main.
+
+✅ 疑問句：  
+Did Codex finish the task?  
+Yes, it did.
+
+---
+
+## 朗讀練習
+
+### 段落一 — 今天我做了什麼？（Past Simple 肯定句）
+
+Today I reviewed the new GitHub update.  
+Codex created a new HTML page for the report.  
+It also added a new entry to the index page.  
+The entry name was clear and professional.  
+After that, the changes were pushed to the main branch.
+
+### 段落二 — 我們確認了什麼流程？（We confirmed that…）
+
+We confirmed that this workflow should continue.  
+Claude and I plan the structure first.  
+Codex executes the code changes.  
+Then Claude and I review the result again.  
+Finally, I decide whether to merge the pull request.
+
+### 段落三 — 為什麼要保留 PR？（Why / Because）
+
+Why should we keep using pull requests?  
+Because a pull request gives us one more review checkpoint.  
+It helps us catch layout problems before publishing.  
+It also makes the change history easier to track.  
+So we should not push directly to main unless I clearly ask for it.
+
+### 段落四 — 每日英文網站要做什麼？（Daily practice）
+
+This website turns my daily work into English practice.  
+I do not only memorize words.  
+I practice how to explain real tasks in English.  
+Each page becomes a small speaking script.  
+Over time, these pages will become my personal English database.
+
+### 段落五 — 模擬主管問答（Did you…?）
+
+Did Codex create the new page?  
+Yes, it did.
+
+Did we review the index entry?  
+Yes, we did.
+
+Did we decide to keep the PR workflow?  
+Yes, we did.
+
+Did we push every future change directly to main?  
+No, we didn’t.  
+We decided to use pull requests first.
+
+---
+
+## 詞彙發音
+
+| English | IPA | 中文 |
+|---|---|---|
+| branch | /bræntʃ/ | 分支 |
+| pull request | /pʊl rɪˈkwest/ | 合併請求 |
+| review | /rɪˈvjuː/ | 檢查、審查 |
+| merge | /mɜːrdʒ/ | 合併 |
+| push | /pʊʃ/ | 推送 |
+| publish | /ˈpʌblɪʃ/ | 發布 |
+| update | /ˈʌpdeɪt/ | 更新 |
+| entry | /ˈentri/ | 入口、項目 |
+| workflow | /ˈwɜːrkfloʊ/ | 工作流程 |
+| checkpoint | /ˈtʃekpɔɪnt/ | 檢查點 |
+| execute | /ˈeksɪkjuːt/ | 執行 |
+| confirm | /kənˈfɜːrm/ | 確認 |
+
+---
+
+## 核心句型
+
+1. I created a new HTML page for the report.  
+   我為報告新增了一個 HTML 頁面。
+
+2. Codex added a new entry to the index page.  
+   Codex 在首頁加入了一個新的入口。
+
+3. We confirmed that the workflow should continue.  
+   我們確認這個工作流程應該維持下去。
+
+4. Claude and I plan the structure first.  
+   Claude 和我會先規劃架構。
+
+5. Codex executes the code changes.  
+   Codex 執行程式碼修改。
+
+6. I review the result before merging it.  
+   我會在合併前檢查結果。
+
+7. We didn’t push directly to main.  
+   我們沒有直接推到 main。
+
+8. Why did we use a pull request?  
+   我們為什麼使用 PR？
+
+9. Because we wanted one more review checkpoint.  
+   因為我們想多一個檢查點。
+
+10. This website turns my daily work into English practice.  
+    這個網站把我的日常工作轉成英文練習。
+
+---
+
+## 今日測驗
+
+### 第一關：聽音選答案
+
+1. What does “branch” mean?  
+   A. 分支  
+   B. 錯誤  
+   C. 按鈕  
+   D. 表格  
+   Answer: A
+
+2. What does “pull request” mean?  
+   A. 合併請求  
+   B. 公司資料  
+   C. 瀏覽器  
+   D. 伺服器  
+   Answer: A
+
+3. What does “review” mean?  
+   A. 檢查、審查  
+   B. 刪除  
+   C. 阻擋  
+   D. 下載  
+   Answer: A
+
+4. What does “workflow” mean?  
+   A. 工作流程  
+   B. 網頁標題  
+   C. 錯誤訊息  
+   D. 會員資料  
+   Answer: A
+
+5. What does “checkpoint” mean?  
+   A. 檢查點  
+   B. 密碼  
+   C. 欄位  
+   D. 圖片  
+   Answer: A
+
+---
+
+### 第二關：填空題
+
+1. Codex ______ a new HTML page for the report.  
+   Answer: created
+
+2. We ______ that the workflow should continue.  
+   Answer: confirmed
+
+3. We didn’t push directly to ______.  
+   Answer: main
+
+4. Why did we use a pull request?  
+   ______ we wanted one more review checkpoint.  
+   Answer: Because
+
+---
+
+## 今日口說任務
+
+請跟讀三次：
+
+I use this website to practice real work English.  
+I turn my daily tasks into short English scripts.  
+This helps me explain my work more clearly.
+
+進階版：
+
+My workflow is simple.  
+I plan the structure with Claude, Codex executes the code changes, and I review the result before merging the pull request.
+
+---
+
+## 今日總結
+
+今天的英文主題不是背單字，而是把真實工作流程說清楚。
+
+中文裡你說的是：  
+「我和 Claude 規劃，Codex 執行，我再檢查，最後決定要不要合併 PR。」
+
+英文可以說成：
+
+Claude and I plan the structure first.  
+Codex executes the code changes.  
+Then I review the result and decide whether to merge the pull request.
+
+這就是你的每日英文資料庫真正有價值的地方：  
+不是寫漂亮英文，而是把每天的工作，變成未來面試、會議、交接都能直接使用的語料。
+
+---
+
+daily-english is maintained by Pcc329.  
+工作日誌 × Headway Elementary U4 延伸 · Generated by ChatGPT · 2026-06-24
