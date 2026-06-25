@@ -8,6 +8,7 @@
 
 | 日期 | 主題 |
 |------|------|
+| [06/25 週四](./daily_english_20260625.md) | 方案摘要・斷字修正・手機短句發音 |
 | [06/24 週三](./daily_english_20260624.md) | GitHub 工作流 × PR 流程 |
 | [06/23 週二](daily_english_20260623.html) | 交接盤點・資料調查・Why/Because 句型 |
 | [06/22 週一](daily_english_20260622.html) | 汙染防護・Haiku 省成本・Past Simple 句型練習 |
