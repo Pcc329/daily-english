@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日英文練習</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g:    #157878;
+  --gd:   #0f6e56;
+  --gl:   #e8f5f1;
+  --gm:   #b2dfdb;
+  --ink:  #1c1c1a;
+  --muted:#666;
+  --hint: #999;
+  --bg:   #f7f6f2;
+  --card: #ffffff;
+  --bdr:  rgba(0,0,0,.1);
+  --r:    12px;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg); color: var(--ink); min-height: 100vh;
+}
+
+/* ── header ── */
+.site-header {
+  background: linear-gradient(135deg, #157878 0%, #0f6e56 100%);
+  padding: 28px 20px 24px; color: #fff;
+}
+.site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.site-header p  { font-size: 13px; opacity: 0.8; margin-bottom: 14px; }
+.gh-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; color: rgba(255,255,255,0.82); text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; padding: 4px 10px;
+}
+.gh-link:hover { background: rgba(255,255,255,0.12); }
+
+/* ── wrap ── */
+.wrap { max-width: 540px; margin: 0 auto; padding: 20px 16px 48px; }
+
+/* ── principle card ── */
+.principle {
+  background: var(--card); border: 1.5px solid var(--g);
+  border-radius: var(--r); padding: 16px 18px; margin-bottom: 20px;
+}
+.principle-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--g); margin-bottom: 8px;
+}
+.principle-tagline {
+  font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 14px;
+}
+.mode-row { display: flex; gap: 8px; margin-bottom: 12px; }
+.mode-card {
+  flex: 1; background: var(--gl); border-radius: 8px;
+  padding: 10px 10px 8px; text-align: center;
+}
+.mode-time  { font-size: 20px; font-weight: 700; color: var(--g); line-height: 1; margin-bottom: 4px; }
+.mode-act   { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.mode-where { font-size: 11px; color: var(--muted); }
+.principle-note {
+  font-size: 12px; color: var(--muted); line-height: 1.7;
+  border-top: 1px dashed var(--gm); padding-top: 10px;
+}
+.principle-note strong { color: var(--ink); }
+
+/* ── accordion ── */
+.accordion { margin-bottom: 10px; border-radius: var(--r); overflow: hidden; border: 1.5px solid var(--bdr); }
+.acc-toggle {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px; background: var(--g); color: #fff;
+  border: none; cursor: pointer; font-family: inherit;
+  font-size: 15px; font-weight: 700; text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+.acc-toggle:active { background: var(--gd); }
+.acc-meta { font-size: 12px; font-weight: 400; opacity: .8; margin-left: 8px; }
+.acc-arrow { font-size: 14px; transition: transform .25s; flex-shrink: 0; }
+.acc-toggle.open .acc-arrow { transform: rotate(180deg); }
+.acc-body { display: none; background: var(--card); padding: 10px 0; }
+.acc-body.open { display: block; }
+
+/* sub section label */
+.sub-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--hint); padding: 10px 16px 4px;
+}
+
+/* list items */
+.list-item {
+  display: flex; align-items: center; padding: 11px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.06); gap: 12px;
+  text-decoration: none; color: var(--ink); transition: background .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.list-item:last-child { border-bottom: none; }
+.list-item:active { background: var(--gl); }
+.list-item.disabled { opacity: .45; pointer-events: none; }
+.item-left { flex: 1; min-width: 0; }
+.item-date { font-size: 12px; font-weight: 700; color: var(--g); margin-bottom: 2px; }
+.item-topic { font-size: 14px; color: var(--ink); line-height: 1.4; }
+.item-arrow { color: var(--muted); flex-shrink: 0; font-size: 16px; }
+.item-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
+  background: var(--gl); color: var(--gd); border: 1px solid var(--gm);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* footer */
+.site-footer {
+  text-align: center; padding: 16px; font-size: 11px; color: var(--hint);
+  border-top: 1px solid rgba(0,0,0,.08); margin-top: 8px;
+}
+.site-footer a { color: var(--gd); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>每日英文練習</h1>
+  <p>資料庫工程師的英文口說復健 · Daily Speaking Practice</p>
+  <a class="gh-link" href="https://github.com/Pcc329/daily-english" target="_blank">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    View on GitHub
+  </a>
+</header>
+
+<div class="wrap">
+
+  <!-- principle card -->
+  <div class="principle">
+    <div class="principle-label">📐 底層學習原則</div>
+    <div class="principle-tagline">三個字・三句話・三道題</div>
+    <div class="mode-row">
+      <div class="mode-card">
+        <div class="mode-time">2'</div>
+        <div class="mode-act">🔊 複習</div>
+        <div class="mode-where">點字卡聽發音</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-time">5'</div>
+        <div class="mode-act">✏️ 考試</div>
+        <div class="mode-where">直接跳測驗</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-time">10'</div>
+        <div class="mode-act">📖 學習</div>
+        <div class="mode-where">聽句子 + 測驗</div>
+      </div>
+    </div>
+    <div class="principle-note">
+      每頁獨立，不需按順序。<br>
+      <strong>不需要準備，打開就能開始。</strong>
+    </div>
+  </div>
+
+  <!-- work series -->
+  <div class="accordion">
+    <button class="acc-toggle" onclick="toggle(this)">
+      <span>💼 工作系列 <span class="acc-meta">12 篇</span></span>
+      <span class="acc-arrow">▾</span>
+    </button>
+    <div class="acc-body">
+      <a class="list-item" href="daily_english_20260625.html">
+        <div class="item-left">
+          <div class="item-date">06/25 週四</div>
+          <div class="item-topic">方案摘要・斷字修正・手機短句發音</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260624.html">
+        <div class="item-left">
+          <div class="item-date">06/24 週三</div>
+          <div class="item-topic">GitHub 工作流 × PR 流程</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260623.html">
+        <div class="item-left">
+          <div class="item-date">06/23 週二</div>
+          <div class="item-topic">交接盤點・資料調查・Why/Because 句型</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260622.html">
+        <div class="item-left">
+          <div class="item-date">06/22 週一</div>
+          <div class="item-topic">汙染防護・Haiku 省成本・Past Simple</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260616.html">
+        <div class="item-left">
+          <div class="item-date">06/16 週一</div>
+          <div class="item-topic">AI Agent 設計・命名討論・Past Simple</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260611.html">
+        <div class="item-left">
+          <div class="item-date">06/11 週四</div>
+          <div class="item-topic">資料除錯・儀表板換色・簡報製作</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260609.html">
+        <div class="item-left">
+          <div class="item-date">06/09 週二</div>
+          <div class="item-topic">診斷工具上線・員工規模推算・爬蟲研究</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260608.html">
+        <div class="item-left">
+          <div class="item-date">06/08 週一</div>
+          <div class="item-topic">AI分類・語意搜尋升級・篩選修復</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260605.html">
+        <div class="item-left">
+          <div class="item-date">06/05 週五</div>
+          <div class="item-topic">缺口矩陣・競爭態勢・Present Simple</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260604.html">
+        <div class="item-left">
+          <div class="item-date">06/04 週四</div>
+          <div class="item-topic">Strategy Guide・ROI 試算・統編批次補查</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260603.html">
+        <div class="item-left">
+          <div class="item-date">06/03 週三</div>
+          <div class="item-topic">測試缺口・語意搜尋・規格書範本</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item" href="daily_english_20260602.html">
+        <div class="item-left">
+          <div class="item-date">06/02 週二</div>
+          <div class="item-topic">第五輪測試・策略修正・踩煞車</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- leisure series -->
+  <div class="accordion">
+    <button class="acc-toggle" onclick="toggle(this)">
+      <span>🎮 休閒系列 <span class="acc-meta">3 個主題</span></span>
+      <span class="acc-arrow">▾</span>
+    </button>
+    <div class="acc-body">
+
+      <div class="sub-label">📖 Headway Elementary</div>
+      <a class="list-item" href="headway_u3_time_off.html">
+        <div class="item-left">
+          <div class="item-date">Unit 3</div>
+          <div class="item-topic">Time off — 休閒時光・Present Simple・頻率副詞</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+
+      <div class="sub-label">🤖 變形金剛 Transformers</div>
+      <a class="list-item" href="transformers_constructicons.html">
+        <div class="item-left">
+          <div class="item-date">建造者軍團</div>
+          <div class="item-topic">Constructicons — 六種工程車輛・合體成蹂躪者</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+
+      <div class="sub-label">⚡ 希臘神話 Greek Mythology</div>
+      <a class="list-item" href="greek_myth_hercules_ep1.html">
+        <div class="item-left">
+          <div class="item-date">EP 1 / 3</div>
+          <div class="item-topic">Hercules 大力神：身世・悲劇・贖罪</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
+      <a class="list-item disabled">
+        <div class="item-left">
+          <div class="item-date">EP 2 / 3</div>
+          <div class="item-topic">十二試煉 第一～六</div>
+        </div>
+        <span class="item-badge">即將推出</span>
+      </a>
+      <a class="list-item disabled">
+        <div class="item-left">
+          <div class="item-date">EP 3 / 3</div>
+          <div class="item-topic">十二試煉 第七～十二・神格化</div>
+        </div>
+        <span class="item-badge">即將推出</span>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <a href="https://github.com/Pcc329/daily-english">daily-english</a> is maintained by
+  <a href="https://github.com/Pcc329">Pcc329</a>
+</footer>
+
+<script>
+function toggle(btn) {
+  btn.classList.toggle('open');
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+</script>
+</body>
+</html>
