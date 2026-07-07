@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>水果 Fruits · 每日英文三分鐘</title>
+<title>水果 Fruits · TOEIC 700 · 每日英文三分鐘</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--g:#e67e22;--gd:#ca6f1e;--gl:#fef5e7;--ink:#1c1c1a;--muted:#666;--hint:#999;--bg:#f7f6f2;--card:#fff;--border:rgba(0,0,0,.1);--r:12px;}
@@ -11,11 +11,12 @@ html,body{height:100%;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100vh;}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;}
 .back-btn{font-size:13px;color:var(--g);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px;}
-.timer-label{font-size:12px;font-weight:700;color:var(--g);background:var(--gl);border:1px solid #b2dfdb;border-radius:999px;padding:3px 10px;}
+.timer-label{font-size:12px;font-weight:700;color:var(--g);background:var(--gl);border:1px solid #f0c080;border-radius:999px;padding:3px 10px;}
 .hero{padding:10px 20px 18px;}
 .hero-series{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hint);margin-bottom:4px;}
 .hero-title{font-size:22px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px;}
 .hero-sub{font-size:13px;color:var(--muted);}
+.toeic-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;border-radius:999px;background:var(--g);color:#fff;margin-top:6px;}
 .progress-wrap{padding:0 20px 20px;}
 .progress-track{height:4px;background:#ddd;border-radius:999px;overflow:hidden;}
 .progress-fill{height:100%;background:var(--g);border-radius:999px;transition:width .4s ease;}
@@ -34,7 +35,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .word-zh{font-size:13px;color:var(--muted);}
 .sent-en{font-size:15px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:4px;}
 .sent-zh{font-size:12px;color:var(--muted);line-height:1.5;}
-.word-btn,.sent-btn{width:38px;height:38px;border-radius:50%;border:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--g);color:#fff;transition:background .15s;}
+.word-btn,.sent-btn{width:38px;height:38px;border-radius:50%;border:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--g);color:#fff;}
 .sent-btn{width:34px;height:34px;background:var(--gl);color:var(--g);margin-top:2px;}
 .word-card.playing .word-btn,.sent-card.playing .sent-btn{background:var(--gd);color:#fff;}
 .word-card.done .word-btn,.sent-card.done .sent-btn{background:#22a06b;color:#fff;}
@@ -47,7 +48,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .play-q-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;border:1.5px solid var(--g);background:var(--gl);color:var(--gd);cursor:pointer;margin-bottom:12px;font-family:inherit;}
 .play-q-btn svg{width:12px;height:12px;fill:currentColor;}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-.opt-btn{font-size:13px;padding:9px 10px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--ink);cursor:pointer;text-align:left;font-family:inherit;transition:all .12s;line-height:1.4;-webkit-tap-highlight-color:transparent;}
+.opt-btn{font-size:13px;padding:9px 10px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--ink);cursor:pointer;text-align:left;font-family:inherit;transition:all .12s;line-height:1.4;}
 .opt-btn:active{transform:scale(.97);}
 .opt-btn.correct{border-color:#22a06b;background:#e3fcef;color:#1a6b45;font-weight:700;}
 .opt-btn.wrong{border-color:#e53935;background:#ffebee;color:#c62828;}
@@ -55,8 +56,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .fill-input{font-size:15px;font-family:inherit;border:none;border-bottom:2px solid var(--g);background:transparent;color:var(--ink);min-width:100px;padding:2px 6px;outline:none;text-align:center;flex:1;max-width:200px;}
 .fill-input.correct{border-color:#22a06b;color:#1a6b45;}
 .fill-input.wrong{border-color:#e53935;color:#c62828;}
-.fill-pre,.fill-suf{font-size:15px;color:var(--ink);}
-.fill-check-btn{font-size:13px;padding:6px 14px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--muted);cursor:pointer;font-family:inherit;}
+.fill-pre,.fill-suf{font-size:15px;color:var(--ink);line-height:1.8;}
+.fill-check-btn{font-size:13px;padding:6px 14px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--muted);cursor:pointer;font-family:inherit;margin-top:4px;display:block;}
 .q-feedback{font-size:13px;margin-top:8px;font-weight:600;min-height:20px;}
 .q-feedback.ok{color:#22a06b;}
 .q-feedback.ng{color:#e53935;}
@@ -80,9 +81,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 <div class="main-content" id="mainContent">
   <div class="hero">
-    <div class="hero-series">🍎 休閒系列 · 水果 Fruits</div>
-    <div class="hero-title">水果英文</div>
+    <div class="hero-series">🍎 休閒系列 · 水果 · TOEIC 700</div>
+    <div class="hero-title">水果英文 — 新聞與商業語境</div>
     <div class="hero-sub">三個字・三句話・三道題</div>
+    <div class="toeic-badge">TOEIC 700 目標詞彙</div>
   </div>
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -102,9 +104,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <button class="retry-btn" onclick="retry()">再來一次</button>
 </div>
 <script>
-const words=[{"en": "mango", "zh": "芒果"}, {"en": "lychee", "zh": "荔枝"}, {"en": "dragon fruit", "zh": "火龍果"}];
-const sents=[{"en": "Taiwan is famous for its sweet and juicy mangoes.", "zh": "台灣以香甜多汁的芒果聞名。"}, {"en": "Lychee has a rough red shell and juicy white flesh inside.", "zh": "荔枝外有粗糙的紅殼，裡面是多汁的白色果肉。"}, {"en": "Dragon fruit has a bright pink skin and mild, sweet flesh.", "zh": "火龍果外皮鮮粉紅，果肉清甜。"}];
-const quizData=[{"type": "listen", "word": "mango", "q": "聽到的是哪種水果？", "answer": "芒果", "opts": ["芒果", "荔枝", "火龍果", "百香果"]}, {"type": "fill", "pre": "Lychee has a rough red shell and juicy white", "blank": "flesh", "suf": "inside.", "hint": "提示：果肉（名詞）"}, {"type": "listen", "word": "dragon fruit", "q": "聽到的是哪種水果？", "answer": "火龍果", "opts": ["火龍果", "芒果", "荔枝", "楊桃"]}];
+const words=[{"en": "harvest", "zh": "收成；收穫（名詞／動詞）"}, {"en": "cultivate", "zh": "栽培；種植；培育"}, {"en": "export", "zh": "出口；外銷（動詞／名詞）"}];
+const sents=[{"en": "The annual mango harvest has declined due to irregular rainfall this season.", "zh": "今年因降雨不規律，年度芒果收成下滑。"}, {"en": "Taiwan cultivates over 100 varieties of tropical fruit for both domestic and export markets.", "zh": "台灣栽培超過百種熱帶水果，同時供應國內與外銷市場。"}, {"en": "Dragon fruit exports to Southeast Asia have increased by 30% over the past two years.", "zh": "台灣火龍果出口東南亞，過去兩年成長了 30%。"}];
+const quizData=[{"type": "listen", "word": "harvest", "q": "聽到的是哪個詞彙？", "answer": "收成；收穫（名詞／動詞）", "opts": ["收成；收穫（名詞／動詞）", "栽培；種植", "出口；外銷", "灌溉；澆水"]}, {"type": "fill", "pre": "Taiwan", "blank": "cultivates", "suf": "over 100 varieties of tropical fruit.", "hint": "提示：cultivate 的第三人稱單數（栽培）"}, {"type": "listen", "word": "export", "q": "聽到的是哪個詞彙？", "answer": "出口；外銷（動詞／名詞）", "opts": ["出口；外銷（動詞／名詞）", "收成；收穫", "栽培；種植", "進口；輸入"]}];
 let doneCount=0,quizScore=0;
 const quizDone=[false,false,false];
 function tick(){doneCount=Math.min(doneCount+1,9);const p=Math.round(doneCount/9*100);document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressText').textContent=doneCount+' / 9 完成';}
@@ -118,7 +120,7 @@ words.forEach((w)=>{const c=document.createElement('div');c.className='word-card
 const sentRow=document.getElementById('sentRow');
 sents.forEach((s)=>{const c=document.createElement('div');c.className='sent-card';c.innerHTML='<div class="sent-left"><div class="sent-en">'+s.en+'</div><div class="sent-zh">'+s.zh+'</div></div><button class="sent-btn">'+playSVG+'</button>';const btn=c.querySelector('.sent-btn');c.addEventListener('click',()=>{speak(s.en,c,()=>{if(!c.dataset.counted){c.dataset.counted='1';tick();}btn.innerHTML=doneSVG;});});sentRow.appendChild(c);});
 const quizArea=document.getElementById('quizArea');
-quizData.forEach((q,i)=>{const div=document.createElement('div');div.className='quiz-card';div.id='qc'+i;if(q.type==='listen'){const opts=q.opts.map(o=>'<button class="opt-btn" onclick="pickOpt(this,'+i+',this.textContent,\''+q.answer.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')">'+o+'</button>').join('');div.innerHTML='<div class="q-label">第'+(i+1)+'題・聽音選義</div><button class="play-q-btn" onclick="speak(\''+q.word+'\',null)">'+playSVG+' 播放</button><div class="q-text">'+q.q+'</div><div class="opts">'+opts+'</div><div class="q-feedback" id="qf'+i+'"></div>';}else{div.innerHTML='<div class="q-label">第'+(i+1)+'題・填空</div><div class="fill-row"><span class="fill-pre">'+q.pre+'</span><input class="fill-input" id="fi'+i+'" type="text" autocomplete="off" spellcheck="false" placeholder="______"><span class="fill-suf">'+q.suf+'</span></div><div style="margin-top:8px"><button class="fill-check-btn" onclick="checkFill('+i+',\''+q.blank+'\')">確認</button></div><div class="q-feedback" id="qf'+i+'"></div>';const inp=div.querySelector('input');if(inp)inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkFill(i,q.blank);});}quizArea.appendChild(div);});
+quizData.forEach((q,i)=>{const div=document.createElement('div');div.className='quiz-card';div.id='qc'+i;if(q.type==='listen'){const opts=q.opts.map(o=>'<button class="opt-btn" onclick="pickOpt(this,'+i+',this.textContent,\''+q.answer.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')">'+o+'</button>').join('');div.innerHTML='<div class="q-label">第'+(i+1)+'題・聽音選義</div><button class="play-q-btn" onclick="speak(\''+q.word+'\',null)">'+playSVG+' 播放</button><div class="q-text">'+q.q+'</div><div class="opts">'+opts+'</div><div class="q-feedback" id="qf'+i+'"></div>';}else{div.innerHTML='<div class="q-label">第'+(i+1)+'題・填空</div><div class="fill-row"><span class="fill-pre">'+q.pre+'</span><input class="fill-input" id="fi'+i+'" type="text" autocomplete="off" spellcheck="false" placeholder="______"><span class="fill-suf">'+q.suf+'</span></div><button class="fill-check-btn" onclick="checkFill('+i+',\''+q.blank+'\')">確認</button><div class="q-feedback" id="qf'+i+'"></div>';const inp=div.querySelector('input');if(inp)inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkFill(i,q.blank);});}quizArea.appendChild(div);});
 function pickOpt(btn,idx,chosen,correct){if(quizDone[idx])return;quizDone[idx]=true;const card=document.getElementById('qc'+idx);card.querySelectorAll('.opt-btn').forEach(b=>{b.disabled=true;if(b.textContent===correct)b.classList.add('correct');});const fb=document.getElementById('qf'+idx);if(chosen===correct){btn.classList.add('correct');fb.textContent='✓ 正確！';fb.className='q-feedback ok';card.classList.add('correct');quizScore++;tick();}else{btn.classList.add('wrong');fb.textContent='✗ 答案：'+correct;fb.className='q-feedback ng';card.classList.add('wrong');tick();}}
 function checkFill(idx,answer){if(quizDone[idx])return;quizDone[idx]=true;const inp=document.getElementById('fi'+idx);inp.disabled=true;const val=inp.value.trim().toLowerCase();const card=document.getElementById('qc'+idx);const fb=document.getElementById('qf'+idx);if(val===answer.toLowerCase()){inp.classList.add('correct');fb.textContent='✓ 正確！';fb.className='q-feedback ok';card.classList.add('correct');quizScore++;tick();}else{inp.classList.add('wrong');fb.textContent='✗ 答案：'+answer;fb.className='q-feedback ng';card.classList.add('wrong');tick();}}
 function submitAll(){quizData.forEach((q,i)=>{if(!quizDone[i]){if(q.type==='fill')checkFill(i,q.blank);else{quizDone[i]=true;tick();document.getElementById('qf'+i).textContent='（未作答）';}}});const e=quizScore===3?'🎉':quizScore===2?'👍':quizScore===1?'💪':'🔄';document.getElementById('doneEmoji').textContent=e;document.getElementById('doneScore').textContent=quizScore+' / 3';document.getElementById('mainContent').style.display='none';document.getElementById('doneScreen').classList.add('show');}
