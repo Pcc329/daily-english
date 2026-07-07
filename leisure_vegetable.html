@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蔬菜 Vegetables · 每日英文三分鐘</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--g:#27ae60;--gd:#1e8449;--gl:#eafaf1;--ink:#1c1c1a;--muted:#666;--hint:#999;--bg:#f7f6f2;--card:#fff;--border:rgba(0,0,0,.1);--r:12px;}
+html,body{height:100%;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100vh;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;}
+.back-btn{font-size:13px;color:var(--g);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:4px;}
+.timer-label{font-size:12px;font-weight:700;color:var(--g);background:var(--gl);border:1px solid #b2dfdb;border-radius:999px;padding:3px 10px;}
+.hero{padding:10px 20px 18px;}
+.hero-series{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hint);margin-bottom:4px;}
+.hero-title{font-size:22px;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:4px;}
+.hero-sub{font-size:13px;color:var(--muted);}
+.progress-wrap{padding:0 20px 20px;}
+.progress-track{height:4px;background:#ddd;border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--g);border-radius:999px;transition:width .4s ease;}
+.progress-text{font-size:11px;color:var(--hint);margin-top:5px;}
+.section{padding:0 20px 20px;}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hint);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-title::after{content:'';flex:1;height:1px;background:#e0e0e0;}
+.word-row,.sent-row{display:flex;flex-direction:column;gap:8px;}
+.word-card,.sent-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .15s;gap:12px;-webkit-tap-highlight-color:transparent;}
+.sent-card{align-items:flex-start;}
+.word-card:active,.sent-card:active{transform:scale(.98);}
+.word-card.playing,.sent-card.playing{border-color:var(--g);background:var(--gl);}
+.word-card.done,.sent-card.done{border-color:#22a06b;background:#f0fdf4;}
+.word-left,.sent-left{flex:1;min-width:0;}
+.word-en{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.word-zh{font-size:13px;color:var(--muted);}
+.sent-en{font-size:15px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:4px;}
+.sent-zh{font-size:12px;color:var(--muted);line-height:1.5;}
+.word-btn,.sent-btn{width:38px;height:38px;border-radius:50%;border:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--g);color:#fff;transition:background .15s;}
+.sent-btn{width:34px;height:34px;background:var(--gl);color:var(--g);margin-top:2px;}
+.word-card.playing .word-btn,.sent-card.playing .sent-btn{background:var(--gd);color:#fff;}
+.word-card.done .word-btn,.sent-card.done .sent-btn{background:#22a06b;color:#fff;}
+.word-btn svg,.sent-btn svg{width:13px;height:13px;fill:currentColor;}
+.quiz-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;}
+.quiz-card.correct{border-color:#22a06b;background:#f0fdf4;}
+.quiz-card.wrong{border-color:#e53935;background:#fff5f5;}
+.q-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hint);margin-bottom:8px;}
+.q-text{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.5;}
+.play-q-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;border:1.5px solid var(--g);background:var(--gl);color:var(--gd);cursor:pointer;margin-bottom:12px;font-family:inherit;}
+.play-q-btn svg{width:12px;height:12px;fill:currentColor;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.opt-btn{font-size:13px;padding:9px 10px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--ink);cursor:pointer;text-align:left;font-family:inherit;transition:all .12s;line-height:1.4;-webkit-tap-highlight-color:transparent;}
+.opt-btn:active{transform:scale(.97);}
+.opt-btn.correct{border-color:#22a06b;background:#e3fcef;color:#1a6b45;font-weight:700;}
+.opt-btn.wrong{border-color:#e53935;background:#ffebee;color:#c62828;}
+.fill-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
+.fill-input{font-size:15px;font-family:inherit;border:none;border-bottom:2px solid var(--g);background:transparent;color:var(--ink);min-width:100px;padding:2px 6px;outline:none;text-align:center;flex:1;max-width:200px;}
+.fill-input.correct{border-color:#22a06b;color:#1a6b45;}
+.fill-input.wrong{border-color:#e53935;color:#c62828;}
+.fill-pre,.fill-suf{font-size:15px;color:var(--ink);}
+.fill-check-btn{font-size:13px;padding:6px 14px;border-radius:8px;border:1.5px solid #ddd;background:var(--bg);color:var(--muted);cursor:pointer;font-family:inherit;}
+.q-feedback{font-size:13px;margin-top:8px;font-weight:600;min-height:20px;}
+.q-feedback.ok{color:#22a06b;}
+.q-feedback.ng{color:#e53935;}
+.done-screen{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;flex:1;}
+.done-screen.show{display:flex;}
+.done-emoji{font-size:56px;margin-bottom:16px;}
+.done-title{font-size:24px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.done-sub{font-size:15px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
+.done-score{font-size:36px;font-weight:700;color:var(--g);margin-bottom:4px;}
+.done-score-sub{font-size:13px;color:var(--hint);margin-bottom:28px;}
+.retry-btn{font-size:14px;font-weight:600;padding:10px 28px;border-radius:10px;border:none;background:var(--g);color:#fff;cursor:pointer;font-family:inherit;}
+.submit-wrap{padding:0 20px 32px;}
+.submit-btn{width:100%;font-size:16px;font-weight:700;padding:14px;border-radius:var(--r);border:none;background:var(--g);color:#fff;cursor:pointer;font-family:inherit;}
+.main-content{flex:1;}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back-btn" href="./"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0z"/></svg>目錄</a>
+  <div class="timer-label">⏱ 約 3 分鐘</div>
+</div>
+<div class="main-content" id="mainContent">
+  <div class="hero">
+    <div class="hero-series">🥦 休閒系列 · 蔬菜 Vegetables</div>
+    <div class="hero-title">蔬菜英文</div>
+    <div class="hero-sub">三個字・三句話・三道題</div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText">0 / 9 完成</div>
+  </div>
+  <div class="section"><div class="sec-title">今日三個字</div><div class="word-row" id="wordRow"></div></div>
+  <div class="section"><div class="sec-title">今日三句話</div><div class="sent-row" id="sentRow"></div></div>
+  <div class="section"><div class="sec-title">考三題</div><div id="quizArea"></div></div>
+  <div class="submit-wrap"><button class="submit-btn" onclick="submitAll()">交卷 →</button></div>
+</div>
+<div class="done-screen" id="doneScreen">
+  <div class="done-emoji" id="doneEmoji">✅</div>
+  <div class="done-title">今天做完了！</div>
+  <div class="done-sub">三個字・三句話・三道題<br>明天見。</div>
+  <div class="done-score" id="doneScore">3 / 3</div>
+  <div class="done-score-sub">測驗答對</div>
+  <button class="retry-btn" onclick="retry()">再來一次</button>
+</div>
+<script>
+const words=[{"en": "broccoli", "zh": "花椰菜"}, {"en": "spinach", "zh": "菠菜"}, {"en": "eggplant", "zh": "茄子"}];
+const sents=[{"en": "Broccoli is rich in vitamins and is often steamed or stir-fried.", "zh": "花椰菜富含維生素，常用蒸或炒的方式烹調。"}, {"en": "Spinach is a leafy green vegetable packed with iron.", "zh": "菠菜是富含鐵質的綠葉蔬菜。"}, {"en": "Eggplant has a deep purple skin and a soft, spongy texture.", "zh": "茄子有深紫色的外皮，口感柔軟海綿狀。"}];
+const quizData=[{"type": "listen", "word": "broccoli", "q": "聽到的是哪種蔬菜？", "answer": "花椰菜", "opts": ["花椰菜", "菠菜", "茄子", "青椒"]}, {"type": "listen", "word": "eggplant", "q": "聽到的是哪種蔬菜？", "answer": "茄子", "opts": ["茄子", "花椰菜", "菠菜", "白蘿蔔"]}, {"type": "fill", "pre": "Spinach is a leafy green vegetable packed with", "blank": "iron", "suf": ".", "hint": "提示：鐵質（礦物質）"}];
+let doneCount=0,quizScore=0;
+const quizDone=[false,false,false];
+function tick(){doneCount=Math.min(doneCount+1,9);const p=Math.round(doneCount/9*100);document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressText').textContent=doneCount+' / 9 完成';}
+let activeEl=null;
+function clearActive(){if(activeEl){activeEl.classList.remove('playing');activeEl=null;}}
+function speak(text,el,onDone){window.speechSynthesis.cancel();clearActive();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.9;if(el){el.classList.add('playing');activeEl=el;}u.onend=u.onerror=()=>{if(el){el.classList.remove('playing');if(!el.classList.contains('done'))el.classList.add('done');}if(activeEl===el)activeEl=null;if(onDone)onDone();};window.speechSynthesis.speak(u);}
+const playSVG='<svg viewBox="0 0 16 16"><path d="M3 2l10 6-10 6V2z"/></svg>';
+const doneSVG='<svg viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>';
+const wordRow=document.getElementById('wordRow');
+words.forEach((w)=>{const c=document.createElement('div');c.className='word-card';c.innerHTML='<div class="word-left"><div class="word-en">'+w.en+'</div><div class="word-zh">'+w.zh+'</div></div><button class="word-btn">'+playSVG+'</button>';const btn=c.querySelector('.word-btn');c.addEventListener('click',()=>{speak(w.en,c,()=>{if(!c.dataset.counted){c.dataset.counted='1';tick();}btn.innerHTML=doneSVG;});});wordRow.appendChild(c);});
+const sentRow=document.getElementById('sentRow');
+sents.forEach((s)=>{const c=document.createElement('div');c.className='sent-card';c.innerHTML='<div class="sent-left"><div class="sent-en">'+s.en+'</div><div class="sent-zh">'+s.zh+'</div></div><button class="sent-btn">'+playSVG+'</button>';const btn=c.querySelector('.sent-btn');c.addEventListener('click',()=>{speak(s.en,c,()=>{if(!c.dataset.counted){c.dataset.counted='1';tick();}btn.innerHTML=doneSVG;});});sentRow.appendChild(c);});
+const quizArea=document.getElementById('quizArea');
+quizData.forEach((q,i)=>{const div=document.createElement('div');div.className='quiz-card';div.id='qc'+i;if(q.type==='listen'){const opts=q.opts.map(o=>'<button class="opt-btn" onclick="pickOpt(this,'+i+',this.textContent,\''+q.answer.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')">'+o+'</button>').join('');div.innerHTML='<div class="q-label">第'+(i+1)+'題・聽音選義</div><button class="play-q-btn" onclick="speak(\''+q.word+'\',null)">'+playSVG+' 播放</button><div class="q-text">'+q.q+'</div><div class="opts">'+opts+'</div><div class="q-feedback" id="qf'+i+'"></div>';}else{div.innerHTML='<div class="q-label">第'+(i+1)+'題・填空</div><div class="fill-row"><span class="fill-pre">'+q.pre+'</span><input class="fill-input" id="fi'+i+'" type="text" autocomplete="off" spellcheck="false" placeholder="______"><span class="fill-suf">'+q.suf+'</span></div><div style="margin-top:8px"><button class="fill-check-btn" onclick="checkFill('+i+',\''+q.blank+'\')">確認</button></div><div class="q-feedback" id="qf'+i+'"></div>';const inp=div.querySelector('input');if(inp)inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkFill(i,q.blank);});}quizArea.appendChild(div);});
+function pickOpt(btn,idx,chosen,correct){if(quizDone[idx])return;quizDone[idx]=true;const card=document.getElementById('qc'+idx);card.querySelectorAll('.opt-btn').forEach(b=>{b.disabled=true;if(b.textContent===correct)b.classList.add('correct');});const fb=document.getElementById('qf'+idx);if(chosen===correct){btn.classList.add('correct');fb.textContent='✓ 正確！';fb.className='q-feedback ok';card.classList.add('correct');quizScore++;tick();}else{btn.classList.add('wrong');fb.textContent='✗ 答案：'+correct;fb.className='q-feedback ng';card.classList.add('wrong');tick();}}
+function checkFill(idx,answer){if(quizDone[idx])return;quizDone[idx]=true;const inp=document.getElementById('fi'+idx);inp.disabled=true;const val=inp.value.trim().toLowerCase();const card=document.getElementById('qc'+idx);const fb=document.getElementById('qf'+idx);if(val===answer.toLowerCase()){inp.classList.add('correct');fb.textContent='✓ 正確！';fb.className='q-feedback ok';card.classList.add('correct');quizScore++;tick();}else{inp.classList.add('wrong');fb.textContent='✗ 答案：'+answer;fb.className='q-feedback ng';card.classList.add('wrong');tick();}}
+function submitAll(){quizData.forEach((q,i)=>{if(!quizDone[i]){if(q.type==='fill')checkFill(i,q.blank);else{quizDone[i]=true;tick();document.getElementById('qf'+i).textContent='（未作答）';}}});const e=quizScore===3?'🎉':quizScore===2?'👍':quizScore===1?'💪':'🔄';document.getElementById('doneEmoji').textContent=e;document.getElementById('doneScore').textContent=quizScore+' / 3';document.getElementById('mainContent').style.display='none';document.getElementById('doneScreen').classList.add('show');}
+function retry(){location.reload();}
+</script>
+</body>
+</html>
