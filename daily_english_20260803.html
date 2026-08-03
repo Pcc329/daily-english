@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>每日英文練習 | 2026-08-03 資料庫權限修補 × 被動語態 × 字首字根</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #157878;
+  --green-dark: #0f6e56;
+  --green-light: #e8f5f1;
+  --green-mid: #9fd9c8;
+  --ink: #2c2c2a;
+  --ink-muted: #5f5e5a;
+  --ink-hint: #888780;
+  --surface: #ffffff;
+  --surface-alt: #f7f6f2;
+  --border: rgba(44,44,42,.12);
+  --border-em: rgba(44,44,42,.25);
+  --radius: 8px;
+  --radius-lg: 14px;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Menlo', 'Courier New', monospace;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-ui);
+  background: var(--surface-alt);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.site-header {
+  background: linear-gradient(120deg, var(--green) 0%, var(--green-dark) 100%);
+  padding: 2.5rem 2rem 2rem;
+  color: #fff;
+}
+.site-header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.site-header p { font-size: 14px; opacity: .82; margin-bottom: 14px; }
+.badge-row, .btn-row, .day-tags, .speed-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.badge-row { margin-bottom: 12px; }
+.hdr-badge, .tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+.hdr-badge {
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
+}
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+.gh-link:hover { background: rgba(255,255,255,.15); }
+.main-wrap {
+  width: 100%;
+  max-width: 820px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  overflow: hidden;
+}
+.main-wrap > * { width: 100%; max-width: 100%; min-width: 0; }
+.main-wrap p, .main-wrap div, .main-wrap span { overflow-wrap: anywhere; word-break: break-word; }
+.day-header, .passage, .quiz-block, .practice-card, .summary-card, .root-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.day-header {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.day-header > div { min-width: 0; max-width: 100%; }
+.day-date {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.day-title { font-size: 22px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.day-sub { font-size: 14px; color: var(--ink-muted); margin-top: 4px; overflow-wrap: anywhere; }
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--green-light);
+  color: var(--green-dark);
+  border: 1px solid var(--green-mid);
+  white-space: nowrap;
+}
+.grammar-note {
+  background: #eaf2ff;
+  border: 1px solid #b3cfee;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #1a3a5c;
+  overflow-wrap: anywhere;
+}
+.gn-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #5080a0;
+  margin-bottom: 8px;
+}
+.speed-bar { align-items: center; margin-bottom: 1.5rem; }
+.speed-bar label { font-size: 13px; color: var(--ink-muted); }
+.speed-bar input[type=range] { width: 130px; accent-color: var(--green); }
+.speed-val { font-size: 13px; font-weight: 600; color: var(--green-dark); min-width: 36px; }
+.btn-stop, .btn-read, .quiz-check-btn, .quiz-restart-btn {
+  font-family: var(--font-ui);
+  border: 1px solid var(--border-em);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btn-stop { font-size: 12px; padding: 4px 12px; }
+.sec-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-hint);
+  margin: 2rem 0 1rem;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.passage { padding: 1.25rem 1.5rem 1rem; margin-bottom: 1rem; }
+.passage-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-hint);
+  margin-bottom: .75rem;
+}
+.passage-en { min-width: 0; font-size: 15.5px; line-height: 1.9; color: var(--ink); overflow-wrap: anywhere; }
+.passage-en p + p { margin-top: .75rem; }
+.hl-past { color: #1a5276; font-weight: 700; }
+.hl-neg { color: #c0392b; font-weight: 700; }
+.hl-q { color: #7d6608; font-weight: 700; }
+.hl-why { color: var(--green-dark); font-weight: 600; }
+.hl-passive { color: #6c3483; font-weight: 700; }
+.btn-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 5px 14px;
+  background: var(--surface-alt);
+  margin-top: 10px;
+}
+.btn-read:hover, .btn-read.active {
+  border-color: var(--green);
+  color: var(--green-dark);
+  background: var(--green-light);
+}
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 10px;
+}
+.vocab-card {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: .9rem 1rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.vocab-card:hover, .vocab-card.playing {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+.vocab-en { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
+.vocab-ipa {
+  font-size: 11px;
+  color: var(--ink-hint);
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+.vocab-zh { font-size: 12px; color: var(--ink-muted); }
+/* 字首字根卡片 */
+.root-list { display: flex; flex-direction: column; gap: 12px; }
+.root-card { padding: 1rem 1.25rem; cursor: pointer; touch-action: manipulation; }
+.root-card:hover, .root-card.playing { border-color: var(--green); background: var(--green-light); }
+.root-morph { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+.root-morph .part { background: #fff4d6; border-radius: 4px; padding: 0 5px; }
+.root-mean { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 8px; }
+.root-family { font-size: 13px; line-height: 1.9; color: var(--ink); }
+.root-family b { color: var(--green-dark); }
+.sent-list { display: flex; flex-direction: column; gap: 9px; }
+.sent-item {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: .8rem 1rem .8rem 1.1rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.sent-item:hover, .sent-item:focus-visible, .sent-item.playing {
+  background: var(--green-light);
+  outline: none;
+}
+.sent-item:focus-visible { box-shadow: 0 0 0 3px rgba(21,120,120,.22); }
+.sent-en { font-size: 14.5px; line-height: 1.55; overflow-wrap: anywhere; }
+.sent-zh { font-size: 12px; color: var(--ink-muted); margin-top: 3px; }
+.hint-note {
+  font-size: 12px;
+  color: var(--ink-hint);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+.quiz-block { padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.quiz-block-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+.quiz-q { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px dashed var(--border); }
+.quiz-q:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+.quiz-q-text { font-size: 14.5px; line-height: 1.55; margin-bottom: 8px; }
+.quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.quiz-opt {
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-em);
+  background: var(--surface-alt);
+  cursor: pointer;
+  touch-action: manipulation;
+  text-align: left;
+}
+.quiz-opt.correct { border-color: #22a06b; background: #e3fcef; color: #1a6b45; font-weight: 600; }
+.quiz-opt.wrong { border-color: #c9372c; background: #ffeceb; color: #c9372c; }
+.fill-sentence { font-size: 15px; line-height: 2.3; }
+.fill-input {
+  font-size: 15px;
+  border: 0;
+  border-bottom: 2px solid var(--green);
+  background: transparent;
+  min-width: 110px;
+  padding: 0 4px;
+  text-align: center;
+}
+.quiz-check-btn { font-size: 12px; padding: 4px 12px; margin-top: 6px; }
+.quiz-feedback { font-size: 12px; margin-top: 5px; min-height: 18px; }
+.quiz-feedback.ok { color: #22a06b; font-weight: 600; }
+.quiz-feedback.ng { color: #c9372c; }
+.practice-card, .summary-card { padding: 1.25rem 1.5rem; line-height: 1.8; }
+.practice-card p + p, .summary-card p + p { margin-top: .8rem; }
+.practice-card .advanced {
+  background: var(--green-light);
+  border-left: 3px solid var(--green);
+  padding: .75rem 1rem;
+  margin-top: 1rem;
+}
+.summary-card { background: #fffdf4; border-color: #e5d9a8; }
+.summary-card .english-summary {
+  background: var(--surface);
+  border-left: 3px solid #c6a94b;
+  padding: .75rem 1rem;
+  margin: 1rem 0;
+}
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem;
+  font-size: 12px;
+  color: var(--ink-hint);
+  text-align: center;
+  line-height: 1.7;
+}
+.site-footer a { color: var(--green-dark); text-decoration: none; }
+@media (max-width: 520px) {
+  .site-header { padding: 1.75rem 1.25rem 1.5rem; }
+  .site-header h1 { font-size: 22px; }
+  .day-header { flex-direction: column; }
+  .main-wrap { padding-left: .75rem; padding-right: .75rem; }
+  .day-title { font-size: 20px; }
+  .vocab-grid { grid-template-columns: minmax(0, 1fr); }
+  .quiz-opts { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>每日英文練習</h1>
+  <p>資料庫工程師的英文口說復健 · Daily Speaking Practice</p>
+  <div class="badge-row">
+    <span class="hdr-badge">Passive Voice</span>
+    <span class="hdr-badge">was granted / were revoked</span>
+    <span class="hdr-badge">Word Roots</span>
+    <span class="hdr-badge">Security</span>
+    <span class="hdr-badge">Mobile Speaking</span>
+  </div>
+  <div class="btn-row">
+    <a class="gh-link" href="./">← 返回目錄</a>
+    <a class="gh-link" href="https://github.com/Pcc329/daily-english" target="_blank">View on GitHub</a>
+  </div>
+</header>
+
+<main class="main-wrap">
+  <div class="day-header">
+    <div>
+      <div class="day-date">2026.08.03 &nbsp;—&nbsp; Day 12</div>
+      <div class="day-title">資料庫權限修補 × 被動語態 × 字首字根記憶</div>
+      <div class="day-sub">Database permission hardening · Passive voice · Word roots &amp; affixes</div>
+    </div>
+    <div class="day-tags">
+      <span class="tag">passive voice</span>
+      <span class="tag">access control</span>
+      <span class="tag">privilege</span>
+      <span class="tag">word roots</span>
+      <span class="tag">tap to speak</span>
+    </div>
+  </div>
+
+  <div class="grammar-note">
+    <div class="gn-title">📖 今日文法重點 — 被動語態 Passive Voice（was/were + 過去分詞）</div>
+    資安操作的主角常是「動作本身」，不是「誰做的」，所以英文技術文件大量使用被動語態。<br /><br />
+    ✅ <strong>權限被授予</strong>：Full access <strong>was granted</strong> to the public key by mistake.<br />
+    ✅ <strong>權限被撤銷</strong>：The write permissions <strong>were revoked</strong> from the anon role.<br />
+    ✅ <strong>個資被保護</strong>：Contact data <strong>is masked</strong> before it is returned.<br />
+    ✅ <strong>存取被拒絕</strong>：The request <strong>was denied</strong> with a permission error.<br /><br />
+    <strong>主動 vs 被動對照：</strong><br />
+    主動：We <em>revoked</em> the permissions.（我們撤銷了權限）<br />
+    被動：The permissions <em>were revoked</em>.（權限被撤銷了 — 不強調誰做，強調結果）
+  </div>
+
+  <div class="speed-bar">
+    <label for="speed">語速</label>
+    <input type="range" id="speed" min="0.6" max="1.4" step="0.1" value="0.9" />
+    <span class="speed-val" id="speed-out">0.9×</span>
+    <button class="btn-stop" onclick="stopAll()">■ 停止</button>
+  </div>
+
+  <div class="sec-label">朗讀練習</div>
+
+  <div class="passage">
+    <div class="passage-title">段落一 — 我們發現了什麼？（We found that…）</div>
+    <div class="passage-en" data-speech="Today I planned to migrate the contacts table. During the health check, I found a serious problem. The public key had full permissions on many tables. It could read private contact data. It could even delete or empty entire tables. The front end looked safe, but the data was not locked.">
+      <p>Today I planned to migrate the contacts table.<br />
+      During the health check, I <span class="hl-past">found</span> a serious problem.<br />
+      The public key <span class="hl-past">had</span> full permissions on many tables.<br />
+      It could read private contact data.<br />
+      It could even delete or empty entire tables.<br />
+      The front end looked safe, but the data <span class="hl-passive">was not locked</span>.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落二 — 風險是什麼？（被動語態 Passive）</div>
+    <div class="passage-en" data-speech="The public key is written in the front end, so anyone can read it. Because of this, the contact data could be exposed to the public. The records could also be deleted or changed. This is a serious privacy risk. Sensitive data should never be exposed through a public key.">
+      <p>The public key <span class="hl-passive">is written</span> in the front end, so anyone can read it.<br />
+      Because of this, the contact data <span class="hl-passive">could be exposed</span> to the public.<br />
+      The records <span class="hl-passive">could also be deleted</span> or changed.<br />
+      This is a serious privacy risk.<br />
+      Sensitive data <span class="hl-passive">should never be exposed</span> through a public key.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落三 — 我們怎麼修的？（were revoked）</div>
+    <div class="passage-en" data-speech="First, all permissions were revoked from the contacts table. Then the write permissions were removed from the business tables. Only the read permission was kept, because the front end still needs to display data. Finally, the change was verified by testing the public key directly.">
+      <p>First, all permissions <span class="hl-passive">were revoked</span> from the contacts table.<br />
+      Then the write permissions <span class="hl-passive">were removed</span> from the business tables.<br />
+      Only the read permission <span class="hl-passive">was kept</span>, because the front end still needs to display data.<br />
+      Finally, the change <span class="hl-passive">was verified</span> by testing the public key directly.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落四 — 兩道鎖的觀念（Two independent locks）</div>
+    <div class="passage-en" data-speech="Database access is protected by two independent locks. The first lock is the table permission. It decides whether a role can touch the table at all. The second lock is row-level security. It decides which rows a role can see. If either lock is closed, the access is blocked. The contacts table is now locked by both.">
+      <p>Database access <span class="hl-passive">is protected</span> by two independent locks.<br />
+      The first lock is the table permission.<br />
+      It decides whether a role can touch the table at all.<br />
+      The second lock is row-level security.<br />
+      It decides which rows a role can see.<br />
+      If either lock is closed, the access <span class="hl-passive">is blocked</span>.<br />
+      The contacts table <span class="hl-passive">is now locked</span> by both.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落五 — 模擬主管問答（Did you…?）</div>
+    <div class="passage-en" data-speech="Did you find a security problem? Yes, I did. Were the permissions too wide? Yes, they were. What was revoked? The write and delete permissions were revoked from the public key. Was the contact data exposed before? Yes, it could be. Is it safe now? Yes, it is. It was verified by a direct test.">
+      <p><span class="hl-q">Did</span> you find a security problem?<br />
+      Yes, I did.</p>
+      <p><span class="hl-q">Were</span> the permissions too wide?<br />
+      Yes, they <span class="hl-passive">were</span>.</p>
+      <p><span class="hl-q">What</span> was revoked?<br />
+      The write and delete permissions <span class="hl-passive">were revoked</span> from the public key.</p>
+      <p><span class="hl-q">Is</span> it safe now?<br />
+      Yes, it is. It <span class="hl-passive">was verified</span> by a direct test.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="sec-label">詞彙發音</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點卡片聽發音</div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+
+  <div class="sec-label">字首字根延伸記憶</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點卡片聽字根單字 · 拆解一次記一串</div>
+  <div class="root-list" id="rootList"></div>
+
+  <div class="sec-label">核心句型</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點句子聽完整朗讀</div>
+  <div class="sent-list" id="sentList"></div>
+
+  <div class="sec-label">今日測驗</div>
+  <div class="quiz-block">
+    <div class="quiz-block-title">📻 第一關：聽音選答案</div>
+    <div id="listenQuiz"></div>
+  </div>
+  <div class="quiz-block">
+    <div class="quiz-block-title">✏️ 第二關：被動語態填空</div>
+    <div id="fillQuiz"></div>
+  </div>
+
+  <div class="sec-label">今日口說任務</div>
+  <div class="practice-card">
+    <p><strong>請跟讀三次：</strong></p>
+    <p data-speech="I found that the public key had too many permissions. The write and delete rights were revoked. Only the read permission was kept, so the front end still works.">
+      I found that the public key had too many permissions.<br />
+      The write and delete rights were revoked.<br />
+      Only the read permission was kept, so the front end still works.
+    </p>
+    <button class="btn-read">▶ 聽整段</button>
+    <div class="advanced">
+      <strong>進階版：</strong><br />
+      <span data-speech="Database access is protected by two independent locks: table permissions and row-level security. The contact data is now locked by both, and the fix was verified by testing the public key directly.">
+        Database access is protected by two independent locks: table permissions and row-level security.<br />
+        The contact data is now locked by both, and the fix was verified by testing the public key directly.
+      </span>
+    </div>
+  </div>
+
+  <div class="sec-label">今日總結</div>
+  <div class="summary-card">
+    <p>今天的英文主題是如何用被動語態描述資安修補。</p>
+    <p>中文裡你說的是：<br />
+    「公開金鑰權限開太大，聯絡人個資可能外洩；我們撤銷了寫入與刪除權限，只保留讀取，並實測驗證修好了。」</p>
+    <div class="english-summary">
+      The public key had too many permissions, so the contact data could be exposed.<br />
+      The write and delete permissions were revoked, and only read access was kept.<br />
+      The fix was verified by testing the public key directly.
+    </div>
+    <p>這就是你的每日英文資料庫真正有價值的地方：<br />
+    把資安操作用被動語態說清楚 — 這正是技術文件與資安報告最常見的語態。</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <a href="https://github.com/Pcc329/daily-english">daily-english</a> is maintained by Pcc329.<br />
+  工作日誌 × 被動語態 × 字首字根 · 2026-08-03
+</footer>
+
+<script>
+const vocab = [
+  { en:"permission", ipa:"/pərˈmɪʃən/", zh:"權限" },
+  { en:"privilege", ipa:"/ˈprɪvəlɪdʒ/", zh:"特權、權限" },
+  { en:"grant", ipa:"/ɡrænt/", zh:"授予" },
+  { en:"revoke", ipa:"/rɪˈvoʊk/", zh:"撤銷" },
+  { en:"access control", ipa:"/ˈækses kənˈtroʊl/", zh:"存取控制" },
+  { en:"role", ipa:"/roʊl/", zh:"角色（身分）" },
+  { en:"anonymous", ipa:"/əˈnɑːnɪməs/", zh:"匿名的" },
+  { en:"expose", ipa:"/ɪkˈspoʊz/", zh:"暴露" },
+  { en:"masking", ipa:"/ˈmæskɪŋ/", zh:"遮罩" },
+  { en:"row-level security", ipa:"/roʊ ˈlevəl sɪˈkjʊrəti/", zh:"列級安全" },
+  { en:"vulnerability", ipa:"/ˌvʌlnərəˈbɪləti/", zh:"漏洞" },
+  { en:"least privilege", ipa:"/liːst ˈprɪvəlɪdʒ/", zh:"最小權限" }
+];
+
+// 字首字根：拆解 + 同根字延伸
+const roots = [
+  {
+    morph: [["re-","回、再"],["voke","呼叫 (voc/vok)"]],
+    means: "revoke = 呼叫回來 → 撤銷",
+    family: "同根 <b>voc/vok</b>（呼叫）：re<b>voke</b>(撤銷)、in<b>voke</b>(呼叫、援引)、<b>voc</b>al(聲音的)、<b>voc</b>ation(天職)、ad<b>voc</b>ate(倡導者)",
+    say: "revoke, invoke, vocal, vocation, advocate"
+  },
+  {
+    morph: [["per-","徹底、通過"],["miss","送出 (mit/miss)"]],
+    means: "permission = 徹底送出許可 → 權限",
+    family: "同根 <b>mit/miss</b>（送）：per<b>miss</b>ion(權限)、trans<b>mit</b>(傳送)、sub<b>mit</b>(提交)、<b>miss</b>ion(任務)、e<b>mit</b>(發出)",
+    say: "permission, transmit, submit, mission, emit"
+  },
+  {
+    morph: [["priv-","個別、私 (privus)"],["-lege","法律 (leg)"]],
+    means: "privilege = 給個別的人的法律 → 特權",
+    family: "同根 <b>priv</b>（私）：<b>priv</b>ilege(特權)、<b>priv</b>ate(私人的)、<b>priv</b>acy(隱私)、de<b>priv</b>e(剝奪)",
+    say: "privilege, private, privacy, deprive"
+  },
+  {
+    morph: [["ex-","向外"],["pose","放置 (pon/pos)"]],
+    means: "expose = 放到外面 → 暴露",
+    family: "同根 <b>pos/pon</b>（放）：ex<b>pose</b>(暴露)、com<b>pos</b>e(組成)、pro<b>pos</b>e(提議)、op<b>pos</b>e(反對)、post<b>pon</b>e(延後)",
+    say: "expose, compose, propose, oppose, postpone"
+  },
+  {
+    morph: [["se-","分開"],["cur","關心 (cura)"]],
+    means: "security = 沒有擔心 → 安全",
+    family: "同根 <b>cur</b>（關心、照料）：se<b>cur</b>ity(安全)、<b>cur</b>e(治療)、ac<b>cur</b>ate(精確的)、<b>cur</b>ious(好奇的)、<b>cur</b>ator(策展人)",
+    say: "security, cure, accurate, curious, curator"
+  },
+  {
+    morph: [["anonym-","無名 (an+onym)"],["-ous","形容詞"]],
+    means: "anonymous = 沒有名字的 → 匿名",
+    family: "同根 <b>onym/onoma</b>（名字）：an<b>onym</b>ous(匿名)、syn<b>onym</b>(同義字)、ant<b>onym</b>(反義字)、pseud<b>onym</b>(筆名)",
+    say: "anonymous, synonym, antonym, pseudonym"
+  }
+];
+
+const sentences = [
+  { en:"Full access was granted to the public key by mistake.", zh:"完整權限被誤授給了公開金鑰。" },
+  { en:"The write permissions were revoked from the anonymous role.", zh:"寫入權限已從匿名角色被撤銷。" },
+  { en:"Only the read permission was kept for the front end.", zh:"只保留了讀取權限給前端。" },
+  { en:"The contact data is masked before it is returned.", zh:"聯絡人資料在回傳前先被遮罩。" },
+  { en:"Sensitive data should never be exposed through a public key.", zh:"敏感資料絕不應透過公開金鑰被暴露。" },
+  { en:"Database access is protected by two independent locks.", zh:"資料庫存取由兩道獨立的鎖保護。" },
+  { en:"The request was denied with a permission error.", zh:"該請求被拒絕，回傳權限錯誤。" },
+  { en:"Every role should follow the principle of least privilege.", zh:"每個角色都應遵循最小權限原則。" },
+  { en:"The vulnerability was fixed and verified on the same day.", zh:"這個漏洞當天就被修復並驗證。" },
+  { en:"The masked view is still available to authorized roles.", zh:"遮罩檢視表仍開放給授權角色使用。" }
+];
+
+const listenData = [
+  { word:"revoke", answer:"撤銷", opts:["撤銷","授予","備份","部署"] },
+  { word:"privilege", answer:"特權、權限", opts:["特權、權限","版本","索引","佇列"] },
+  { word:"expose", answer:"暴露", opts:["暴露","加密","壓縮","對齊"] },
+  { word:"masking", answer:"遮罩", opts:["遮罩","分頁","快取","排序"] },
+  { word:"vulnerability", answer:"漏洞", opts:["漏洞","相容性","延遲","吞吐量"] }
+];
+
+const fillData = [
+  { before:"The write permissions", blank:"were revoked", after:"from the anonymous role.", hint:"被撤銷 (were + p.p.)" },
+  { before:"Full access", blank:"was granted", after:"to the public key by mistake.", hint:"被授予 (was + p.p.)" },
+  { before:"The contact data", blank:"is masked", after:"before it is returned.", hint:"被遮罩 (is + p.p.)" },
+  { before:"The request", blank:"was denied", after:"with a permission error.", hint:"被拒絕 (was + p.p.)" }
+];
+
+let activeEl = null;
+function stopAll() {
+  window.speechSynthesis.cancel();
+  if (activeEl) activeEl.classList.remove('playing', 'active');
+  activeEl = null;
+}
+function speak(text, el) {
+  stopAll();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = parseFloat(document.getElementById('speed').value);
+  if (el) {
+    el.classList.add('playing', 'active');
+    activeEl = el;
+  }
+  utterance.onend = utterance.onerror = () => {
+    if (el) el.classList.remove('playing', 'active');
+    activeEl = null;
+  };
+  window.speechSynthesis.speak(utterance);
+}
+document.getElementById('speed').addEventListener('input', function () {
+  document.getElementById('speed-out').textContent = Number(this.value).toFixed(1) + '×';
+});
+document.querySelectorAll('.btn-read').forEach(button => {
+  button.addEventListener('click', () => {
+    const container = button.previousElementSibling;
+    const speechTarget = container && container.dataset.speech
+      ? container
+      : button.parentElement.querySelector('[data-speech]');
+    if (speechTarget) speak(speechTarget.dataset.speech, button);
+  });
+});
+
+const vocabGrid = document.getElementById('vocabGrid');
+vocab.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'vocab-card';
+  card.innerHTML = `<div class="vocab-en">${item.en}</div><div class="vocab-ipa">${item.ipa}</div><div class="vocab-zh">${item.zh}</div>`;
+  card.addEventListener('click', () => speak(item.en, card));
+  vocabGrid.appendChild(card);
+});
+
+const rootList = document.getElementById('rootList');
+roots.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'root-card';
+  const morphHtml = item.morph.map(m => `<span class="part">${m[0]}</span> <span style="font-size:11px;color:var(--ink-hint)">${m[1]}</span>`).join(' &nbsp;+&nbsp; ');
+  card.innerHTML = `<div class="root-morph">${morphHtml}</div><div class="root-mean">${item.means}</div><div class="root-family">${item.family}</div>`;
+  card.addEventListener('click', () => speak(item.say, card));
+  rootList.appendChild(card);
+});
+
+const sentList = document.getElementById('sentList');
+sentences.forEach(item => {
+  const row = document.createElement('div');
+  row.className = 'sent-item';
+  row.setAttribute('role', 'button');
+  row.setAttribute('tabindex', '0');
+  row.setAttribute('aria-label', '播放短句：' + item.en);
+  row.innerHTML = `<div class="sent-en">${item.en}</div><div class="sent-zh">${item.zh}</div>`;
+  const playSentence = () => speak(item.en, row);
+  row.addEventListener('click', playSentence);
+  row.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      playSentence();
+    }
+  });
+  sentList.appendChild(row);
+});
+
+const listenQuiz = document.getElementById('listenQuiz');
+listenData.forEach((question, index) => {
+  const block = document.createElement('div');
+  block.className = 'quiz-q';
+  block.innerHTML = `<div class="quiz-q-text">${index + 1}. What does “${question.word}” mean? <button class="quiz-check-btn play-word">▶ 聽單字</button></div><div class="quiz-opts"></div><div class="quiz-feedback"></div>`;
+  block.querySelector('.play-word').addEventListener('click', () => speak(question.word));
+  const options = block.querySelector('.quiz-opts');
+  question.opts.forEach(option => {
+    const button = document.createElement('button');
+    button.className = 'quiz-opt';
+    button.textContent = option;
+    button.addEventListener('click', () => {
+      options.querySelectorAll('button').forEach(item => {
+        item.disabled = true;
+        if (item.textContent === question.answer) item.classList.add('correct');
+      });
+      const feedback = block.querySelector('.quiz-feedback');
+      if (option === question.answer) {
+        feedback.textContent = '✓ Answer: ' + question.answer;
+        feedback.className = 'quiz-feedback ok';
+      } else {
+        button.classList.add('wrong');
+        feedback.textContent = '✗ Answer: ' + question.answer;
+        feedback.className = 'quiz-feedback ng';
+      }
+    });
+    options.appendChild(button);
+  });
+  listenQuiz.appendChild(block);
+});
+
+const fillQuiz = document.getElementById('fillQuiz');
+fillData.forEach((question, index) => {
+  const block = document.createElement('div');
+  block.className = 'quiz-q';
+  block.innerHTML = `<div class="quiz-q-text">${index + 1}. Fill in the blank. <span style="font-size:12px;color:var(--ink-hint)">（${question.hint}）</span></div><div class="fill-sentence">${question.before} <input class="fill-input" type="text" autocomplete="off" placeholder="______"> ${question.after}</div><button class="quiz-check-btn">確認</button><div class="quiz-feedback"></div>`;
+  const input = block.querySelector('input');
+  const check = block.querySelector('button');
+  const validate = () => {
+    const feedback = block.querySelector('.quiz-feedback');
+    if (input.value.trim().toLowerCase() === question.blank.toLowerCase()) {
+      feedback.textContent = '✓ Answer: ' + question.blank;
+      feedback.className = 'quiz-feedback ok';
+    } else {
+      feedback.textContent = '✗ Answer: ' + question.blank;
+      feedback.className = 'quiz-feedback ng';
+    }
+  };
+  check.addEventListener('click', validate);
+  input.addEventListener('keydown', event => { if (event.key === 'Enter') validate(); });
+  fillQuiz.appendChild(block);
+});
+</script>
+</body>
+</html>
