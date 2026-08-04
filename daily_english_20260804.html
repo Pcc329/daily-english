@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>每日英文練習 | 2026-08-04 雙線路測試 × 現在完成式 × 字首字根</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #157878;
+  --green-dark: #0f6e56;
+  --green-light: #e8f5f1;
+  --green-mid: #9fd9c8;
+  --ink: #2c2c2a;
+  --ink-muted: #5f5e5a;
+  --ink-hint: #888780;
+  --surface: #ffffff;
+  --surface-alt: #f7f6f2;
+  --border: rgba(44,44,42,.12);
+  --border-em: rgba(44,44,42,.25);
+  --radius: 8px;
+  --radius-lg: 14px;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Menlo', 'Courier New', monospace;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-ui); background: var(--surface-alt); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
+.site-header { background: linear-gradient(120deg, var(--green) 0%, var(--green-dark) 100%); padding: 2.5rem 2rem 2rem; color: #fff; }
+.site-header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.site-header p { font-size: 14px; opacity: .82; margin-bottom: 14px; }
+.badge-row, .btn-row, .day-tags, .speed-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+.badge-row { margin-bottom: 12px; }
+.hdr-badge, .tag { font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 999px; }
+.hdr-badge { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); color: #fff; }
+.gh-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.85); text-decoration: none; border: 1px solid rgba(255,255,255,.4); border-radius: 6px; padding: 4px 12px; }
+.gh-link:hover { background: rgba(255,255,255,.15); }
+.main-wrap { width: 100%; max-width: 820px; min-width: 0; margin: 0 auto; padding: 2rem 1.25rem 4rem; overflow: hidden; }
+.main-wrap > * { width: 100%; max-width: 100%; min-width: 0; }
+.main-wrap p, .main-wrap div, .main-wrap span { overflow-wrap: anywhere; word-break: break-word; }
+.day-header, .passage, .quiz-block, .practice-card, .summary-card, .root-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.day-header { padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.day-header > div { min-width: 0; max-width: 100%; }
+.day-date { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.day-title { font-size: 22px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.day-sub { font-size: 14px; color: var(--ink-muted); margin-top: 4px; overflow-wrap: anywhere; }
+.tag { font-size: 11px; font-weight: 500; background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-mid); white-space: nowrap; }
+.grammar-note { background: #eaf2ff; border: 1px solid #b3cfee; border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13.5px; line-height: 1.8; color: #1a3a5c; overflow-wrap: anywhere; }
+.gn-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #5080a0; margin-bottom: 8px; }
+.speed-bar { align-items: center; margin-bottom: 1.5rem; }
+.speed-bar label { font-size: 13px; color: var(--ink-muted); }
+.speed-bar input[type=range] { width: 130px; accent-color: var(--green); }
+.speed-val { font-size: 13px; font-weight: 600; color: var(--green-dark); min-width: 36px; }
+.btn-stop, .btn-read, .quiz-check-btn { font-family: var(--font-ui); border: 1px solid var(--border-em); border-radius: 6px; background: var(--surface); color: var(--ink-muted); cursor: pointer; touch-action: manipulation; }
+.btn-stop { font-size: 12px; padding: 4px 12px; }
+.sec-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-hint); margin: 2rem 0 1rem; }
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.passage { padding: 1.25rem 1.5rem 1rem; margin-bottom: 1rem; }
+.passage-title { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-hint); margin-bottom: .75rem; }
+.passage-en { min-width: 0; font-size: 15.5px; line-height: 1.9; color: var(--ink); overflow-wrap: anywhere; }
+.passage-en p + p { margin-top: .75rem; }
+.hl-perf { color: #6c3483; font-weight: 700; }
+.hl-flag { color: #c0392b; font-weight: 700; }
+.hl-q { color: #7d6608; font-weight: 700; }
+.hl-key { color: var(--green-dark); font-weight: 600; }
+.hl-past { color: #1a5276; font-weight: 700; }
+.btn-read { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 5px 14px; background: var(--surface-alt); margin-top: 10px; }
+.btn-read:hover, .btn-read.active { border-color: var(--green); color: var(--green-dark); background: var(--green-light); }
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; }
+.vocab-card { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: .9rem 1rem; cursor: pointer; touch-action: manipulation; }
+.vocab-card:hover, .vocab-card.playing { border-color: var(--green); background: var(--green-light); }
+.vocab-en { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
+.vocab-ipa { font-size: 11px; color: var(--ink-hint); font-family: var(--font-mono); margin-bottom: 4px; }
+.vocab-zh { font-size: 12px; color: var(--ink-muted); }
+.root-list { display: flex; flex-direction: column; gap: 12px; }
+.root-card { padding: 1rem 1.25rem; cursor: pointer; touch-action: manipulation; }
+.root-card:hover, .root-card.playing { border-color: var(--green); background: var(--green-light); }
+.root-morph { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+.root-morph .part { background: #fff4d6; border-radius: 4px; padding: 0 5px; }
+.root-mean { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 8px; }
+.root-family { font-size: 13px; line-height: 1.9; color: var(--ink); }
+.root-family b { color: var(--green-dark); }
+.sent-list { display: flex; flex-direction: column; gap: 9px; }
+.sent-item { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: .8rem 1rem .8rem 1.1rem; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.sent-item:hover, .sent-item.playing { background: var(--green-light); }
+.sent-en { font-size: 14.5px; line-height: 1.55; overflow-wrap: anywhere; }
+.sent-zh { font-size: 12px; color: var(--ink-muted); margin-top: 3px; }
+.hint-note { font-size: 12px; color: var(--ink-hint); text-align: center; margin-top: 1.5rem; }
+.quiz-block { padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.quiz-block-title { font-size: 13px; font-weight: 600; color: var(--ink-muted); margin-bottom: 14px; }
+.quiz-q { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px dashed var(--border); }
+.quiz-q:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+.quiz-q-text { font-size: 14.5px; line-height: 1.55; margin-bottom: 8px; }
+.quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.quiz-opt { font-size: 13px; padding: 7px 12px; border-radius: var(--radius); border: 1px solid var(--border-em); background: var(--surface-alt); cursor: pointer; touch-action: manipulation; text-align: left; }
+.quiz-opt.correct { border-color: #22a06b; background: #e3fcef; color: #1a6b45; font-weight: 600; }
+.quiz-opt.wrong { border-color: #c9372c; background: #ffeceb; color: #c9372c; }
+.fill-sentence { font-size: 15px; line-height: 2.3; }
+.fill-input { font-size: 15px; border: 0; border-bottom: 2px solid var(--green); background: transparent; min-width: 120px; padding: 0 4px; text-align: center; }
+.fill-input.correct { border-color: #22a06b; color: #1a6b45; }
+.fill-input.wrong { border-color: #c9372c; color: #c9372c; }
+.quiz-check-btn { font-size: 12px; padding: 4px 12px; margin-top: 6px; }
+.quiz-feedback { font-size: 12px; margin-top: 5px; min-height: 18px; }
+.quiz-feedback.ok { color: #22a06b; font-weight: 600; }
+.quiz-feedback.ng { color: #c9372c; }
+.practice-card, .summary-card { padding: 1.25rem 1.5rem; line-height: 1.8; }
+.practice-card p + p, .summary-card p + p { margin-top: .8rem; }
+.practice-card .advanced { background: var(--green-light); border-left: 3px solid var(--green); padding: .75rem 1rem; margin-top: 1rem; }
+.summary-card { background: #fffdf4; border-color: #e5d9a8; }
+.summary-card .english-summary { background: var(--surface); border-left: 3px solid #c6a94b; padding: .75rem 1rem; margin: 1rem 0; }
+.site-footer { border-top: 1px solid var(--border); padding: 1.25rem; font-size: 12px; color: var(--ink-hint); text-align: center; line-height: 1.7; }
+.site-footer a { color: var(--green-dark); text-decoration: none; }
+@media (max-width: 520px) {
+  .site-header { padding: 1.75rem 1.25rem 1.5rem; }
+  .site-header h1 { font-size: 22px; }
+  .day-header { flex-direction: column; }
+  .main-wrap { padding-left: .75rem; padding-right: .75rem; }
+  .day-title { font-size: 20px; }
+  .vocab-grid { grid-template-columns: minmax(0, 1fr); }
+  .quiz-opts { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>每日英文練習</h1>
+  <p>資料庫工程師的英文口說復健 · Daily Speaking Practice</p>
+  <div class="badge-row">
+    <span class="hdr-badge">Present Perfect</span>
+    <span class="hdr-badge">has passed / has been fixed</span>
+    <span class="hdr-badge">Feature Flag</span>
+    <span class="hdr-badge">Dual-path Test</span>
+    <span class="hdr-badge">Word Roots</span>
+  </div>
+  <div class="btn-row">
+    <a class="gh-link" href="./">← 返回目錄</a>
+    <a class="gh-link" href="https://github.com/Pcc329/daily-english" target="_blank">View on GitHub</a>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <div class="day-header">
+    <div>
+      <div class="day-date">2026.08.04 &nbsp;—&nbsp; Day 13</div>
+      <div class="day-title">雙線路測試 × 現在完成式 × 字首字根記憶</div>
+      <div class="day-sub">Dual-path test · Present perfect · Feature flag · Migration</div>
+    </div>
+    <div class="day-tags">
+      <span class="tag">present perfect</span>
+      <span class="tag">dual-path test</span>
+      <span class="tag">feature flag</span>
+      <span class="tag">migration</span>
+      <span class="tag">validate</span>
+    </div>
+  </div>
+
+  <div class="grammar-note">
+    <div class="gn-title">📖 今日文法重點 — 現在完成式 Present Perfect（have / has + 過去分詞）</div>
+    技術工作的「今日成果」最常用現在完成式，強調動作已完成且結果現在仍有效。<br /><br />
+    ✅ <strong>測試通過了</strong>：The test <strong>has passed</strong> on all endpoints.<br />
+    ✅ <strong>主鍵修正了</strong>：The primary key bug <strong>has been fixed</strong>.<br />
+    ✅ <strong>遷移完成了</strong>：The migration <strong>has been completed</strong>.<br />
+    ✅ <strong>網址確認了</strong>：The preview URL <strong>has been confirmed</strong>.<br /><br />
+    <strong>現在完成式 vs 過去簡單式：</strong><br />
+    過去式：We <em>fixed</em> the primary key bug this morning.（強調時間點）<br />
+    現在完成：The bug <em>has been fixed</em>.（強調結果現在有效，常用於報告成果）
+  </div>
+
+  <div class="speed-bar">
+    <label for="speed">語速</label>
+    <input type="range" id="speed" min="0.6" max="1.4" step="0.1" value="0.9" />
+    <span class="speed-val" id="speed-out">0.9×</span>
+    <button class="btn-stop" onclick="stopAll()">■ 停止</button>
+  </div>
+
+  <div class="sec-label">朗讀練習</div>
+
+  <div class="passage">
+    <div class="passage-title">段落一 — 今天跑了什麼測試？（What has been tested?）</div>
+    <div class="passage-en" data-speech="Today I ran the dual-path test on the Airtable production instance. The test tool has been upgraded to version two. In the previous version, the primary key for the cases table was set to id. This was wrong. The correct field is case id. After the fix, the tool has been able to detect all four primary key types automatically.">
+      <p>Today I ran the <span class="hl-key">dual-path test</span> on the Airtable production instance.<br />
+      The test tool <span class="hl-perf">has been upgraded</span> to version two.<br />
+      In the previous version, the primary key for the cases table <span class="hl-past">was set</span> to <code>id</code>.<br />
+      This was wrong. The correct field is <code>case_id</code>.<br />
+      After the fix, the tool <span class="hl-perf">has been able</span> to detect all four primary key types automatically.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落二 — 第一次執行結果（The test has passed）</div>
+    <div class="passage-en" data-speech="The first run on Airtable has completed with zero critical errors. All endpoints have returned valid responses. The solutions table has returned 2433 records. The companies table has returned 200 records, but the actual count is 852. This is likely an API limit, not a data problem. It has been noted for further investigation.">
+      <p>The first run on Airtable <span class="hl-perf">has completed</span> with zero critical errors.<br />
+      All endpoints <span class="hl-perf">have returned</span> valid responses.<br />
+      The solutions table <span class="hl-perf">has returned</span> 2,433 records.<br />
+      The companies table <span class="hl-perf">has returned</span> 200 records,<br />
+      but the actual count is 852. This is likely an API limit, not a data problem.<br />
+      It <span class="hl-perf">has been noted</span> for further investigation.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落三 — 功能開關是什麼？（Feature flag architecture）</div>
+    <div class="passage-en" data-speech="We use environment variables as feature flags. The variable DB_SOURCE_SOLUTIONS controls which database the API reads from. If it is set to supabase, the API reads from Supabase. If not, it reads from Airtable. This means we have not built a new API. We have added a switch inside the existing one. This design allows instant rollback without any code change.">
+      <p>We use <span class="hl-flag">environment variables</span> as <span class="hl-flag">feature flags</span>.<br />
+      The variable <code>DB_SOURCE_SOLUTIONS</code> controls which database the API reads from.<br />
+      If it is set to <code>supabase</code>, the API reads from Supabase.<br />
+      If not, it reads from Airtable.<br />
+      This means we <span class="hl-perf">have not built</span> a new API.<br />
+      We <span class="hl-perf">have added</span> a switch inside the existing one.<br />
+      This design allows instant rollback without any code change.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落四 — price=0 不用改前端（The front end already handles it）</div>
+    <div class="passage-en" data-speech="We also investigated the price equals zero issue today. The data shows that no solution has been marked as free. The zero or null price means the vendor has not provided pricing information. We checked the front end code, and it has already handled this case correctly. A null or zero price is displayed as Contact for pricing. No code change is needed.">
+      <p>We also investigated the <span class="hl-key">price equals zero</span> issue today.<br />
+      The data shows that no solution <span class="hl-perf">has been marked</span> as free.<br />
+      A zero or null price means the vendor <span class="hl-perf">has not provided</span> pricing information.<br />
+      We checked the front-end code, and it <span class="hl-perf">has already handled</span> this case correctly.<br />
+      A null or zero price is displayed as <em>"Contact for pricing"</em>.<br />
+      No code change is needed.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="passage">
+    <div class="passage-title">段落五 — 模擬主管問答（Has it been tested?）</div>
+    <div class="passage-en" data-speech="Has the test tool been fixed? Yes, it has. The primary key detection has been corrected. Has the Airtable test passed? Yes, it has. All endpoints have returned valid data. Has the Supabase test been run yet? No, it has not. The cell is ready, but it has not been executed yet. What is the next step? The next step is to run the same test on the Supabase preview instance.">
+      <p><span class="hl-q">Has</span> the test tool been fixed? Yes, it <span class="hl-perf">has</span>.<br />
+      The primary key detection <span class="hl-perf">has been corrected</span>.</p>
+      <p><span class="hl-q">Has</span> the Airtable test passed? Yes, it <span class="hl-perf">has</span>.<br />
+      All endpoints <span class="hl-perf">have returned</span> valid data.</p>
+      <p><span class="hl-q">Has</span> the Supabase test been run yet? No, it <span class="hl-perf">has not</span>.<br />
+      The cell is ready, but it <span class="hl-perf">has not been executed</span> yet.</p>
+      <p><span class="hl-q">What</span> is the next step?<br />
+      The next step is to run the same test on the Supabase preview instance.</p>
+    </div>
+    <button class="btn-read">▶ 聽整段</button>
+  </div>
+
+  <div class="sec-label">詞彙發音</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點卡片聽發音</div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+
+  <div class="sec-label">字首字根延伸記憶</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點卡片聽字根單字 · 拆解一次記一串</div>
+  <div class="root-list" id="rootList"></div>
+
+  <div class="sec-label">核心句型</div>
+  <div class="hint-note" style="margin-bottom:12px;margin-top:-4px">點句子聽完整朗讀</div>
+  <div class="sent-list" id="sentList"></div>
+
+  <div class="sec-label">今日測驗</div>
+  <div class="quiz-block">
+    <div class="quiz-block-title">📻 第一關：聽音選答案</div>
+    <div id="listenQuiz"></div>
+  </div>
+  <div class="quiz-block">
+    <div class="quiz-block-title">✏️ 第二關：現在完成式填空</div>
+    <div id="fillQuiz"></div>
+  </div>
+
+  <div class="sec-label">今日口說任務</div>
+  <div class="practice-card">
+    <p><strong>請跟讀三次：</strong></p>
+    <p data-speech="The dual-path test has passed on all Airtable endpoints. The primary key bug has been fixed. The Supabase test has not been run yet, but the cell has been prepared.">
+      The dual-path test has passed on all Airtable endpoints.<br />
+      The primary key bug has been fixed.<br />
+      The Supabase test has not been run yet, but the cell has been prepared.
+    </p>
+    <button class="btn-read">▶ 聽整段</button>
+    <div class="advanced">
+      <strong>進階版：</strong><br />
+      <span data-speech="We have implemented a feature flag architecture using environment variables. The API has not been replaced. A switch has been added inside the existing endpoint. This design allows instant rollback without any code change.">
+        We have implemented a feature flag architecture using environment variables.<br />
+        The API has not been replaced — a switch has been added inside the existing endpoint.<br />
+        This design allows instant rollback without any code change.
+      </span>
+    </div>
+  </div>
+
+  <div class="sec-label">今日總結</div>
+  <div class="summary-card">
+    <p>今天的英文主題是用現在完成式報告今日成果。</p>
+    <p>中文裡你說的是：<br />
+    「雙線路測試工具修好了，Airtable 版全過，主鍵欄位名稱錯誤已修正。Supabase 版還沒跑，Cell 已備好等明天執行。功能開關不是新 API，是在現有 API 裡面加開關。」</p>
+    <div class="english-summary">
+      The dual-path test tool has been fixed and the Airtable run has passed.<br />
+      The primary key field has been corrected from "id" to "case_id".<br />
+      The Supabase test has not been run yet — the cell has been prepared for tomorrow.<br />
+      The feature flag is not a new API; a switch has been added inside the existing endpoint.
+    </div>
+    <p>現在完成式的核心：說<strong>結果</strong>而不說時間點。<br />
+    寫英文進度報告、Slack 更新、PR 描述，幾乎都用這個時態。</p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://github.com/Pcc329/daily-english">daily-english</a> is maintained by Pcc329.<br />
+  工作日誌 × 現在完成式 × 字首字根 · 2026-08-04
+</footer>
+
+<script>
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const vocab = [
+  { en:"dual-path testing",    ipa:"/djuːəl pɑːθ ˈtestɪŋ/",      zh:"雙線路測試" },
+  { en:"feature flag",         ipa:"/ˈfiːtʃər flæɡ/",             zh:"功能開關" },
+  { en:"environment variable", ipa:"/ɪnˈvaɪrənmənt ˈveəriəbl/",   zh:"環境變數" },
+  { en:"primary key",          ipa:"/ˈpraɪmeri kiː/",             zh:"主鍵" },
+  { en:"validate",             ipa:"/ˈvælədeɪt/",                 zh:"驗證；確認有效" },
+  { en:"migration",            ipa:"/maɪˈɡreɪʃən/",               zh:"遷移" },
+  { en:"rollback",             ipa:"/ˈroʊlbæk/",                  zh:"回滾；還原" },
+  { en:"discrepancy",          ipa:"/dɪˈskrep.ən.si/",            zh:"差異；不一致" },
+  { en:"consistency",          ipa:"/kənˈsɪstənsi/",              zh:"一致性" },
+  { en:"endpoint",             ipa:"/ˈendpɔɪnt/",                 zh:"API 端點" },
+  { en:"toggle",               ipa:"/ˈtɒɡəl/",                    zh:"切換；開關" },
+  { en:"preview deployment",   ipa:"/ˈpriːvjuː dɪˈplɔɪmənt/",    zh:"Preview 部署" },
+];
+
+const roots = [
+  {
+    morph: [["migr","移動（拉丁 migrare）"]],
+    means: "migrate = 移動到別處 → 遷移資料",
+    family: "同根 <b>migr</b>（移動）：<b>migr</b>ate(遷移)、im<b>migr</b>ant(移民)、e<b>migr</b>ate(移居海外)、<b>migr</b>ation(遷移過程)、trans<b>migr</b>ate(輪迴；移籍)",
+    say: "migrate, immigrant, emigrate, migration, transmigrate"
+  },
+  {
+    morph: [["val/valid","有效、有力（拉丁 valere）"]],
+    means: "validate = 確認有效 → 驗證",
+    family: "同根 <b>val/valid</b>（有效）：<b>valid</b>ate(驗證)、in<b>valid</b>(無效的)、<b>val</b>ue(價值)、e<b>val</b>uate(評估)、pre<b>val</b>ent(普遍的)",
+    say: "validate, invalid, value, evaluate, prevalent"
+  },
+  {
+    morph: [["integr","完整（拉丁 integer）"]],
+    means: "integrity = 資料完整性、不被篡改",
+    family: "同根 <b>integr</b>（完整）：<b>integr</b>ity(完整性)、<b>integr</b>ate(整合)、dis<b>integr</b>ate(崩解)、<b>integer</b>(整數)、<b>integr</b>al(整體的)",
+    say: "integrity, integrate, disintegrate, integer, integral"
+  },
+  {
+    morph: [["con-","一起"],["sist","站（拉丁 sistere）"]],
+    means: "consistent = 站在一起 → 前後一致",
+    family: "同根 <b>sist</b>（站）：con<b>sist</b>ent(一致的)、in<b>sist</b>(堅持)、per<b>sist</b>(持續)、re<b>sist</b>(抵抗)、as<b>sist</b>(協助)",
+    say: "consistent, insist, persist, resist, assist"
+  },
+  {
+    morph: [["spec/spect","看（拉丁 specere）"]],
+    means: "inspect = 向內仔細看 → 檢查",
+    family: "同根 <b>spec/spect</b>（看）：in<b>spec</b>t(檢查)、ex<b>pect</b>(期待)、<b>spec</b>ify(指定)、retro<b>spec</b>t(回顧)、per<b>spec</b>tive(觀點)",
+    say: "inspect, expect, specify, retrospect, perspective"
+  },
+];
+
+const sentences = [
+  { en:"The dual-path test has passed on all Airtable endpoints.", zh:"雙線路測試已在所有 Airtable 端點通過。" },
+  { en:"The primary key bug has been fixed from 'id' to 'case_id'.", zh:"主鍵錯誤已從 'id' 修正為 'case_id'。" },
+  { en:"The Supabase test has not been run yet — it will be done tomorrow.", zh:"Supabase 版測試尚未執行，明天進行。" },
+  { en:"The environment variable controls which database the API reads from.", zh:"環境變數控制 API 從哪個資料庫讀取。" },
+  { en:"We have not built a new API — we have added a switch inside the existing one.", zh:"我們沒有新建 API，而是在現有 API 裡加了一個開關。" },
+  { en:"This design allows instant rollback without any code change.", zh:"這個設計讓我們可以即時回滾，不需要改任何程式碼。" },
+  { en:"No solution has been marked as free in the database.", zh:"資料庫中沒有任何方案被標記為免費。" },
+  { en:"The front end has already handled null and zero price correctly.", zh:"前端早已正確處理了 null 和 0 的價格情況。" },
+  { en:"A discrepancy of up to four records is acceptable due to known empty shells.", zh:"因已知的空殼記錄，最多四筆差異是可接受的。" },
+  { en:"The migration has been completed, but production cutover has not happened yet.", zh:"遷移已完成，但正式環境的切換尚未執行。" },
+];
+
+const listenData = [
+  { word:"validate",        answer:"驗證；確認有效", opts:["驗證；確認有效","遷移","回滾","部署"] },
+  { word:"rollback",        answer:"回滾；還原",     opts:["回滾；還原","一致性","主鍵","端點"] },
+  { word:"discrepancy",     answer:"差異；不一致",   opts:["差異；不一致","功能開關","環境變數","Preview 部署"] },
+  { word:"feature flag",    answer:"功能開關",       opts:["功能開關","遷移","主鍵","驗證；確認有效"] },
+  { word:"consistency",     answer:"一致性",         opts:["一致性","差異；不一致","回滾；還原","切換；開關"] },
+];
+
+const fillData = [
+  { before:"The dual-path test",    blank:"has passed",        after:"on all Airtable endpoints.",              hint:"通過了（現在完成式）" },
+  { before:"The primary key bug",   blank:"has been fixed",    after:"from 'id' to 'case_id'.",                 hint:"已被修正（被動現在完成式）" },
+  { before:"The Supabase test",     blank:"has not been run",  after:"yet — it will be done tomorrow.",         hint:"尚未執行（被動現在完成式否定）" },
+  { before:"We",                    blank:"have not built",    after:"a new API — we added a switch instead.",  hint:"我們沒有建立（現在完成式否定）" },
+];
+
+let activeEl = null;
+function stopAll() {
+  window.speechSynthesis.cancel();
+  if (activeEl) activeEl.classList.remove('playing', 'active');
+  activeEl = null;
+}
+function speak(text, el) {
+  stopAll();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US';
+  u.rate = parseFloat(document.getElementById('speed').value);
+  if (el) { el.classList.add('playing', 'active'); activeEl = el; }
+  u.onend = u.onerror = () => {
+    if (el) el.classList.remove('playing', 'active');
+    activeEl = null;
+  };
+  window.speechSynthesis.speak(u);
+}
+document.getElementById('speed').addEventListener('input', function () {
+  document.getElementById('speed-out').textContent = Number(this.value).toFixed(1) + '×';
+});
+document.querySelectorAll('.btn-read').forEach(button => {
+  button.addEventListener('click', () => {
+    const container = button.previousElementSibling;
+    const target = container && container.dataset.speech ? container
+      : button.parentElement.querySelector('[data-speech]');
+    if (target) speak(target.dataset.speech, button);
+  });
+});
+
+// vocab
+const vocabGrid = document.getElementById('vocabGrid');
+vocab.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'vocab-card';
+  card.innerHTML = `<div class="vocab-en">${item.en}</div><div class="vocab-ipa">${item.ipa}</div><div class="vocab-zh">${item.zh}</div>`;
+  card.addEventListener('click', () => speak(item.en, card));
+  vocabGrid.appendChild(card);
+});
+
+// roots
+const rootList = document.getElementById('rootList');
+roots.forEach(item => {
+  const card = document.createElement('div');
+  card.className = 'root-card';
+  const morphHtml = item.morph.map(m => `<span class="part">${m[0]}</span> <span style="font-size:11px;color:var(--ink-hint)">${m[1]}</span>`).join(' &nbsp;+&nbsp; ');
+  card.innerHTML = `<div class="root-morph">${morphHtml}</div><div class="root-mean">${item.means}</div><div class="root-family">${item.family}</div>`;
+  card.addEventListener('click', () => speak(item.say, card));
+  rootList.appendChild(card);
+});
+
+// sentences
+const sentList = document.getElementById('sentList');
+sentences.forEach(item => {
+  const row = document.createElement('div');
+  row.className = 'sent-item';
+  row.innerHTML = `<div class="sent-en">${item.en}</div><div class="sent-zh">${item.zh}</div>`;
+  row.addEventListener('click', () => speak(item.en, row));
+  sentList.appendChild(row);
+});
+
+// listen quiz (with shuffle)
+const listenQuiz = document.getElementById('listenQuiz');
+listenData.forEach((q, index) => {
+  const block = document.createElement('div');
+  block.className = 'quiz-q';
+  block.innerHTML = `<div class="quiz-q-text">${index + 1}. What does "<strong>${q.word}</strong>" mean? <button class="quiz-check-btn play-word">▶ 聽單字</button></div><div class="quiz-opts"></div><div class="quiz-feedback"></div>`;
+  block.querySelector('.play-word').addEventListener('click', () => speak(q.word));
+  const optsDiv = block.querySelector('.quiz-opts');
+  shuffle(q.opts).forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = option;
+    btn.addEventListener('click', () => {
+      optsDiv.querySelectorAll('button').forEach(b => {
+        b.disabled = true;
+        if (b.textContent === q.answer) b.classList.add('correct');
+      });
+      const fb = block.querySelector('.quiz-feedback');
+      if (option === q.answer) {
+        btn.classList.add('correct');
+        fb.textContent = '✓ 正確！'; fb.className = 'quiz-feedback ok';
+      } else {
+        btn.classList.add('wrong');
+        fb.textContent = '✗ 答案：' + q.answer; fb.className = 'quiz-feedback ng';
+      }
+    });
+    optsDiv.appendChild(btn);
+  });
+  listenQuiz.appendChild(block);
+});
+
+// fill quiz
+const fillQuiz = document.getElementById('fillQuiz');
+fillData.forEach((q, index) => {
+  const block = document.createElement('div');
+  block.className = 'quiz-q';
+  block.innerHTML = `<div class="quiz-q-text">${index + 1}. Fill in the blank. <span style="font-size:12px;color:var(--ink-hint)">（${q.hint}）</span></div><div class="fill-sentence">${q.before} <input class="fill-input" type="text" autocomplete="off" placeholder="______"> ${q.after}</div><button class="quiz-check-btn">確認</button><div class="quiz-feedback"></div>`;
+  const input = block.querySelector('input');
+  const validate = () => {
+    const fb = block.querySelector('.quiz-feedback');
+    if (input.value.trim().toLowerCase() === q.blank.toLowerCase()) {
+      input.classList.add('correct');
+      fb.textContent = '✓ 正確！'; fb.className = 'quiz-feedback ok';
+    } else {
+      input.classList.add('wrong');
+      fb.textContent = '✗ 答案：' + q.blank; fb.className = 'quiz-feedback ng';
+    }
+  };
+  block.querySelector('button').addEventListener('click', validate);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') validate(); });
+  fillQuiz.appendChild(block);
+});
+</script>
+</body>
+</html>
