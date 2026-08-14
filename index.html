@@ -23,8 +23,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg); color: var(--ink); min-height: 100vh;
 }
-
-/* ── header ── */
 .site-header {
   background: linear-gradient(135deg, #157878 0%, #0f6e56 100%);
   padding: 28px 20px 24px; color: #fff;
@@ -37,11 +35,7 @@ body {
   border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; padding: 4px 10px;
 }
 .gh-link:hover { background: rgba(255,255,255,0.12); }
-
-/* ── wrap ── */
 .wrap { max-width: 540px; margin: 0 auto; padding: 20px 16px 48px; }
-
-/* ── principle card ── */
 .principle {
   background: var(--card); border: 1.5px solid var(--g);
   border-radius: var(--r); padding: 16px 18px; margin-bottom: 20px;
@@ -50,14 +44,9 @@ body {
   font-size: 10px; font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--g); margin-bottom: 8px;
 }
-.principle-tagline {
-  font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 14px;
-}
+.principle-tagline { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
 .mode-row { display: flex; gap: 8px; margin-bottom: 12px; }
-.mode-card {
-  flex: 1; background: var(--gl); border-radius: 8px;
-  padding: 10px 10px 8px; text-align: center;
-}
+.mode-card { flex: 1; background: var(--gl); border-radius: 8px; padding: 10px 10px 8px; text-align: center; }
 .mode-time  { font-size: 20px; font-weight: 700; color: var(--g); line-height: 1; margin-bottom: 4px; }
 .mode-act   { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
 .mode-where { font-size: 11px; color: var(--muted); }
@@ -66,8 +55,6 @@ body {
   border-top: 1px dashed var(--gm); padding-top: 10px;
 }
 .principle-note strong { color: var(--ink); }
-
-/* ── accordion ── */
 .accordion { margin-bottom: 10px; border-radius: var(--r); overflow: hidden; border: 1.5px solid var(--bdr); }
 .acc-toggle {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
@@ -82,14 +69,10 @@ body {
 .acc-toggle.open .acc-arrow { transform: rotate(180deg); }
 .acc-body { display: none; background: var(--card); padding: 10px 0; }
 .acc-body.open { display: block; }
-
-/* sub section label */
 .sub-label {
   font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   color: var(--hint); padding: 10px 16px 4px;
 }
-
-/* list items */
 .list-item {
   display: flex; align-items: center; padding: 11px 16px;
   border-bottom: 1px solid rgba(0,0,0,.06); gap: 12px;
@@ -108,8 +91,6 @@ body {
   background: var(--gl); color: var(--gd); border: 1px solid var(--gm);
   white-space: nowrap; flex-shrink: 0;
 }
-
-/* footer */
 .site-footer {
   text-align: center; padding: 16px; font-size: 11px; color: var(--hint);
   border-top: 1px solid rgba(0,0,0,.08); margin-top: 8px;
@@ -133,7 +114,7 @@ body {
   <!-- principle card -->
   <div class="principle">
     <div class="principle-label">📐 底層學習原則</div>
-    <div class="principle-tagline">三個字・三句話・三道題</div>
+    <div class="principle-tagline">不求多，每天開就能練</div>
     <div class="mode-row">
       <div class="mode-card">
         <div class="mode-time">2'</div>
@@ -160,10 +141,17 @@ body {
   <!-- work series -->
   <div class="accordion">
     <button class="acc-toggle" onclick="toggle(this)">
-      <span>💼 工作系列 <span class="acc-meta">15 篇</span></span>
+      <span>💼 工作系列 <span class="acc-meta">16 篇</span></span>
       <span class="acc-arrow">▾</span>
     </button>
     <div class="acc-body">
+      <a class="list-item" href="daily_english_20260814.html">
+        <div class="item-left">
+          <div class="item-date">08/14 週四</div>
+          <div class="item-topic">案例收錄收尾・外鍵修正・讓步句型</div>
+        </div>
+        <span class="item-arrow">›</span>
+      </a>
       <a class="list-item" href="daily_english_20260812.html">
         <div class="item-left">
           <div class="item-date">08/12 週三</div>
