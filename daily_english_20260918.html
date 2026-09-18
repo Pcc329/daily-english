@@ -15,6 +15,8 @@
       --border: #334155;
       --highlight: #f59e0b;
       --code-bg: #0b1120;
+      --toeic: #ec4899;
+      --toeic-bg: rgba(236, 72, 153, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; display: flex; justify-content: center; }
@@ -24,7 +26,6 @@
     h1 { font-size: 1.875rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
     .subtitle { color: var(--text-muted); font-size: 1rem; }
     
-    /* 語速控制列 */
     .audio-control-bar {
       background: var(--card-bg);
       border: 1px solid var(--accent);
@@ -66,7 +67,9 @@
     .speak-btn:hover { background: var(--accent); color: var(--bg); }
     
     .section-title { font-weight: 700; color: var(--accent); margin-top: 0.75rem; font-size: 0.95rem; }
+    .toeic-title { color: var(--toeic); font-weight: 700; margin-top: 0.75rem; font-size: 0.95rem; }
     .detail-block { background: var(--code-bg); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.925rem; color: #e2e8f0; border-left: 3px solid var(--accent); }
+    .toeic-block { background: var(--code-bg); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.925rem; color: #e2e8f0; border-left: 3px solid var(--toeic); }
     ul { list-style: none; }
     li { margin-bottom: 0.4rem; }
     .example-wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
@@ -87,7 +90,6 @@
     <p class="subtitle">系統優化・數據差異・專案實施 (2026-09-18)</p>
   </header>
 
-  <!-- 語速控制器 -->
   <div class="audio-control-bar">
     <div class="speed-label">🎧 發音語速調節 (Speech Speed)</div>
     <div class="speed-slider-group">
@@ -117,8 +119,16 @@
     <div class="detail-block">
       <ul>
         <li><strong>字源：</strong>拉丁語 <em>optimus</em>（最佳的）。</li>
-        <li><strong>分析：</strong><strong>optim-</strong>（最優）+ <strong>-ize</strong>（使成為...）。</li>
-        <li><strong>衍生字：</strong><strong>Optimal</strong> (adj. 最佳的), <strong>Optimization</strong> (n. 最佳化)。</li>
+        <li><strong>構詞：</strong><strong>optim-</strong>（最優）+ <strong>-ize</strong>（使成為...）。</li>
+        <li><strong>家族字：</strong><strong>Optimal</strong> (adj. 最佳的), <strong>Optimization</strong> (n. 最佳化)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>重音在第一音節 /ˈɑːp/，聽力 Part 3/4 常與 <strong>customize</strong>（客製化）、<strong>maximize</strong>（最大化）混淆，需辨析字首母音。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong><strong>optimize efficiency / workflow / performance</strong>（優化效率／工作流程／效能）。Part 5 經常考詞性填空題（例如空格需填名詞 <em>optimization</em> 還是形容詞 <em>optimal</em>）。</li>
       </ul>
     </div>
 
@@ -152,9 +162,17 @@
     <div class="section-title">🧬 字根字首與來源</div>
     <div class="detail-block">
       <ul>
-        <li><strong>字源：</strong>拉丁語 <em>discrepare</em>（發出不和諧之聲），源自 <em>crepare</em>（破裂聲）。</li>
-        <li><strong>分析：</strong><strong>dis-</strong>（分歧）+ <strong>crep-</strong>（發聲）+ <strong>-ancy</strong>（名詞尾）。</li>
-        <li><strong>衍生字：</strong><strong>Discrepant</strong> (adj. 不相符的)。</li>
+        <li><strong>字源：</strong>拉丁語 <em>discrepare</em>（發出不和諧之聲），源自 <em>crepare</em>（喀噠聲/破裂聲）。</li>
+        <li><strong>構詞：</strong><strong>dis-</strong>（分歧）+ <strong>crep-</strong>（發聲）+ <strong>-ancy</strong>（名詞字尾）。</li>
+        <li><strong>家族字：</strong><strong>Discrepant</strong> (adj. 不相符的)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>重音在第二音節 /skrep/，英澳口音中結尾 /-ən-si/ 容易弱化吞音，聽起來像「dis-KREP-nsi」。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong>固定搭配介系詞 <strong>discrepancy between A and B</strong>（A 與 B 之間的出入）或 <strong>discrepancy in [numbers/records]</strong>（數據／紀錄上的不符）。TOEIC 財務報表、出貨單核對情境必考名詞。</li>
       </ul>
     </div>
 
@@ -189,8 +207,16 @@
     <div class="detail-block">
       <ul>
         <li><strong>字源：</strong>拉丁語 <em>implere</em>（裝滿、完成）。</li>
-        <li><strong>分析：</strong><strong>im-</strong>（使其）+ <strong>ple-</strong>（字根：充滿，同 complete）+ <strong>-ment</strong>（動作）。</li>
-        <li><strong>衍生字：</strong><strong>Implementation</strong> (n. 實施/建置上線)。</li>
+        <li><strong>構詞：</strong><strong>im-</strong>（使其）+ <strong>ple-</strong>（充滿，同 complete）+ <strong>-ment</strong>（動作）。</li>
+        <li><strong>家族字：</strong><strong>Implementation</strong> (n. 實施/建置上線)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>當動詞時結尾唸 /-ment/，但作為名詞（工具／器具）時結尾常弱化成 /-mənt/。聽力常出現在主管交辦新專案的談話中。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong><strong>implement a policy / changes / a new system</strong>（實施政策／推行改革／導入新系統）。在 Part 7 商業信件中，若出現換系統或公司改組公告，此字必為核心答題線索。</li>
       </ul>
     </div>
 
@@ -204,7 +230,6 @@
     </div>
   </div>
 
-  <!-- Synthesis Section -->
   <div class="sprint-summary">
     <h2>🎯 整合複習句型 (Synthesis Pattern)</h2>
     <div class="example-wrap">
@@ -227,17 +252,10 @@
 <script>
   const speedSlider = document.getElementById('speedRate');
   const speedDisplay = document.getElementById('speedDisplay');
-
-  speedSlider.addEventListener('input', (e) => {
-    speedDisplay.textContent = e.target.value + 'x';
-  });
-
+  speedSlider.addEventListener('input', (e) => { speedDisplay.textContent = e.target.value + 'x'; });
   function speakText(text) {
-    if (!('speechSynthesis' in window)) {
-      alert('您的瀏覽器不支援語音合成功能');
-      return;
-    }
-    window.speechSynthesis.cancel(); // 停止先前的朗讀
+    if (!('speechSynthesis' in window)) { alert('您的瀏覽器不支援語音合成功能'); return; }
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     utterance.rate = parseFloat(speedSlider.value);
