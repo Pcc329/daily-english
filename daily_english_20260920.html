@@ -15,6 +15,8 @@
       --border: #334155;
       --highlight: #f59e0b;
       --code-bg: #0b1120;
+      --toeic: #ec4899;
+      --toeic-bg: rgba(236, 72, 153, 0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; display: flex; justify-content: center; }
@@ -65,7 +67,9 @@
     .speak-btn:hover { background: var(--accent); color: var(--bg); }
     
     .section-title { font-weight: 700; color: var(--accent); margin-top: 0.75rem; font-size: 0.95rem; }
+    .toeic-title { color: var(--toeic); font-weight: 700; margin-top: 0.75rem; font-size: 0.95rem; }
     .detail-block { background: var(--code-bg); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.925rem; color: #e2e8f0; border-left: 3px solid var(--accent); }
+    .toeic-block { background: var(--code-bg); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.925rem; color: #e2e8f0; border-left: 3px solid var(--toeic); }
     ul { list-style: none; }
     li { margin-bottom: 0.4rem; }
     .example-wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
@@ -86,7 +90,6 @@
     <p class="subtitle">系統相容性・資料庫遷移・專案緊急備案 (2026-09-20)</p>
   </header>
 
-  <!-- 語速控制器 -->
   <div class="audio-control-bar">
     <div class="speed-label">🎧 發音語速調節 (Speech Speed)</div>
     <div class="speed-slider-group">
@@ -116,8 +119,16 @@
     <div class="detail-block">
       <ul>
         <li><strong>字源：</strong>拉丁語 <em>compati</em>（共同承受）。</li>
-        <li><strong>分析：</strong><strong>com-</strong>（共同）+ <strong>pati-</strong>（忍受/承受）+ <strong>-ible</strong>（能夠...的）。</li>
-        <li><strong>衍生字：</strong><strong>Compatibility</strong> (n. 相容性), <strong>Incompatible</strong> (adj. 不相容的)。</li>
+        <li><strong>構詞：</strong><strong>com-</strong>（共同）+ <strong>pati-</strong>（承受）+ <strong>-ible</strong>（能夠...的）。</li>
+        <li><strong>家族字：</strong><strong>Compatibility</strong> (n. 相容性), <strong>Incompatible</strong> (adj. 不相容的)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>字首 <em>com-</em> 弱化為 /kəm/，重音在第二音節 /pæt/。常考在 Part 3 辦公室採購軟硬體對話，例如抱怨新鍵盤或軟體與舊電腦不合。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong><strong>be compatible with...</strong>（與…相容）。Part 5 最常出介系詞克漏字，四選一直接考你填 <strong>with</strong>。名詞型態 <strong>compatibility issues</strong>（相容性問題）也是閱讀高頻詞。</li>
       </ul>
     </div>
 
@@ -152,8 +163,16 @@
     <div class="detail-block">
       <ul>
         <li><strong>字源：</strong>拉丁語 <em>migrare</em>（搬遷、遷徙）。</li>
-        <li><strong>分析：</strong><strong>migr-</strong>（移動/遷動）+ <strong>-ate</strong>（動詞字尾）。</li>
-        <li><strong>衍生字：</strong><strong>Migration</strong> (n. 遷移/移轉工程), <strong>Migratory</strong> (adj. 遷徙的)。</li>
+        <li><strong>構詞：</strong><strong>migr-</strong>（移動/流動）+ <strong>-ate</strong>（動詞字尾）。</li>
+        <li><strong>家族字：</strong><strong>Migration</strong> (n. 遷移/移轉作業), <strong>Migratory</strong> (adj. 遷徙的)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>英式發音重音常落在第二音節 /maɪˈɡreɪt/，美式發音重音則在第一音節 /ˈmaɪ.ɡreɪt/。Part 4 企業內訓廣播中常出現。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong><strong>migrate to [the cloud / a new platform]</strong>（遷移至雲端／新平台）。在 Part 7 的系統維護通知信中，<em>migration period</em>（系統移轉過渡期）通常會伴隨暫停服務（scheduled downtime）的考點。</li>
       </ul>
     </div>
 
@@ -187,9 +206,17 @@
     <div class="section-title">🧬 字根字首與來源</div>
     <div class="detail-block">
       <ul>
-        <li><strong>字源：</strong>拉丁語 <em>contingere</em>（碰觸、偶發），由 <em>con-</em>（接觸）+ <em>tangere</em>（觸碰）組成。</li>
-        <li><strong>分析：</strong><strong>con-</strong>（共同）+ <strong>ting-</strong>（觸及/發生）+ <strong>-ency</strong>（名詞尾）。</li>
-        <li><strong>衍生字：</strong><strong>Contingent</strong> (adj. 視情況而定的)。</li>
+        <li><strong>字源：</strong>拉丁語 <em>contingere</em>（接觸、偶發事件）。</li>
+        <li><strong>構詞：</strong><strong>con-</strong>（共同）+ <strong>ting-</strong>（觸及）+ <strong>-ency</strong>（名詞字尾）。</li>
+        <li><strong>家族字：</strong><strong>Contingent</strong> (adj. 視情況而定的)。</li>
+      </ul>
+    </div>
+
+    <div class="toeic-title">🎯 TOEIC 700+ 聽讀核心考點</div>
+    <div class="toeic-block">
+      <ul>
+        <li><strong>🎧 聽力陷阱：</strong>第三音節 /dʒən/ 發軟音 g（像 jam 的開頭），不可發成硬音 /ɡ/。音節長度較多，需要留意快速語速下的重音節 /tɪn/。</li>
+        <li><strong>📖 閱讀必考搭配詞：</strong>90% 以上固定考片語 <strong>contingency plan</strong>（應變備案/緊急方案）或 <strong>contingency fund</strong>（緊急備用金）。在 Part 7 專案延宕或天候惡劣的商業對話中，是商務風險管理的典型得分詞。</li>
       </ul>
     </div>
 
@@ -203,7 +230,6 @@
     </div>
   </div>
 
-  <!-- Synthesis Section -->
   <div class="sprint-summary">
     <h2>🎯 整合複習句型 (Synthesis Pattern)</h2>
     <div class="example-wrap">
@@ -226,16 +252,9 @@
 <script>
   const speedSlider = document.getElementById('speedRate');
   const speedDisplay = document.getElementById('speedDisplay');
-
-  speedSlider.addEventListener('input', (e) => {
-    speedDisplay.textContent = e.target.value + 'x';
-  });
-
+  speedSlider.addEventListener('input', (e) => { speedDisplay.textContent = e.target.value + 'x'; });
   function speakText(text) {
-    if (!('speechSynthesis' in window)) {
-      alert('您的瀏覽器不支援語音合成功能');
-      return;
-    }
+    if (!('speechSynthesis' in window)) { alert('您的瀏覽器不支援語音合成功能'); return; }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
