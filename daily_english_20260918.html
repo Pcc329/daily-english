@@ -1,360 +1,290 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>每日英文練習</title>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --g:    #157878;
-  --gd:   #0f6e56;
-  --gl:   #e8f5f1;
-  --gm:   #b2dfdb;
-  --ink:  #1c1c1a;
-  --muted:#666;
-  --hint: #999;
-  --bg:   #f7f6f2;
-  --card: #ffffff;
-  --bdr:  rgba(0,0,0,.1);
-  --r:    12px;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg); color: var(--ink); min-height: 100vh;
-}
-.site-header {
-  background: linear-gradient(135deg, #157878 0%, #0f6e56 100%);
-  padding: 28px 20px 24px; color: #fff;
-}
-.site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-.site-header p  { font-size: 13px; opacity: 0.8; margin-bottom: 14px; }
-.gh-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 12px; color: rgba(255,255,255,0.82); text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; padding: 4px 10px;
-}
-.gh-link:hover { background: rgba(255,255,255,0.12); }
-.wrap { max-width: 540px; margin: 0 auto; padding: 20px 16px 48px; }
-.principle {
-  background: var(--card); border: 1.5px solid var(--g);
-  border-radius: var(--r); padding: 16px 18px; margin-bottom: 20px;
-}
-.principle-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--g); margin-bottom: 8px;
-}
-.principle-tagline { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
-.mode-row { display: flex; gap: 8px; margin-bottom: 12px; }
-.mode-card { flex: 1; background: var(--gl); border-radius: 8px; padding: 10px 10px 8px; text-align: center; }
-.mode-time  { font-size: 20px; font-weight: 700; color: var(--g); line-height: 1; margin-bottom: 4px; }
-.mode-act   { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-.mode-where { font-size: 11px; color: var(--muted); }
-.principle-note {
-  font-size: 12px; color: var(--muted); line-height: 1.7;
-  border-top: 1px dashed var(--gm); padding-top: 10px;
-}
-.principle-note strong { color: var(--ink); }
-.accordion { margin-bottom: 10px; border-radius: var(--r); overflow: hidden; border: 1.5px solid var(--bdr); }
-.acc-toggle {
-  width: 100%; display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 16px; background: var(--g); color: #fff;
-  border: none; cursor: pointer; font-family: inherit;
-  font-size: 15px; font-weight: 700; text-align: left;
-  -webkit-tap-highlight-color: transparent;
-}
-.acc-toggle:active { background: var(--gd); }
-.acc-meta { font-size: 12px; font-weight: 400; opacity: .8; margin-left: 8px; }
-.acc-arrow { font-size: 14px; transition: transform .25s; flex-shrink: 0; }
-.acc-toggle.open .acc-arrow { transform: rotate(180deg); }
-.acc-body { display: none; background: var(--card); padding: 10px 0; }
-.acc-body.open { display: block; }
-.sub-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--hint); padding: 10px 16px 4px;
-}
-.list-item {
-  display: flex; align-items: center; padding: 11px 16px;
-  border-bottom: 1px solid rgba(0,0,0,.06); gap: 12px;
-  text-decoration: none; color: var(--ink); transition: background .12s;
-  -webkit-tap-highlight-color: transparent;
-}
-.list-item:last-child { border-bottom: none; }
-.list-item:active { background: var(--gl); }
-.list-item.disabled { opacity: .45; pointer-events: none; }
-.item-left { flex: 1; min-width: 0; }
-.item-date { font-size: 12px; font-weight: 700; color: var(--g); margin-bottom: 2px; }
-.item-topic { font-size: 14px; color: var(--ink); line-height: 1.4; }
-.item-arrow { color: var(--muted); flex-shrink: 0; font-size: 16px; }
-.item-badge {
-  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 999px;
-  background: var(--gl); color: var(--gd); border: 1px solid var(--gm);
-  white-space: nowrap; flex-shrink: 0;
-}
-.site-footer {
-  text-align: center; padding: 16px; font-size: 11px; color: var(--hint);
-  border-top: 1px solid rgba(0,0,0,.08); margin-top: 8px;
-}
-.site-footer a { color: var(--gd); text-decoration: none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily English - TOEIC 700 Vocabulary Sprint</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --highlight: #f59e0b;
+      --code-bg: #0b1120;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .vocab-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .vocab-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.75rem;
+    }
+    .word-group {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+    .word {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .pos {
+      color: var(--highlight);
+      font-style: italic;
+      font-weight: 600;
+    }
+    .ipa {
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+    .meaning {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .detail-block {
+      background: var(--code-bg);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-top: 0.5rem;
+      font-size: 0.925rem;
+      color: #e2e8f0;
+      border-left: 3px solid var(--accent);
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 0.5rem;
+    }
+    li {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .example-en {
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+    .example-zh {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    .sprint-summary {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    .sprint-summary h2 {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .back-home {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-  <h1>每日英文練習</h1>
-  <p>資料庫工程師的英文口說復健 · Daily Speaking Practice</p>
-  <a class="gh-link" href="https://github.com/Pcc329/daily-english" target="_blank">
-    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-    View on GitHub
-  </a>
-</header>
+<div class="container">
+  <header>
+    <span class="badge">Target: TOEIC 700+</span>
+    <h1>Daily English Sprint: Day 36</h1>
+    <p class="subtitle">資訊專案管理與資料庫架構實戰核心詞彙 (3 Words / Day)</p>
+  </header>
 
-<div class="wrap">
-
-  <!-- principle card -->
-  <div class="principle">
-    <div class="principle-label">📐 底層學習原則</div>
-    <div class="principle-tagline">不求多，每天開就能練</div>
-    <div class="mode-row">
-      <div class="mode-card">
-        <div class="mode-time">2'</div>
-        <div class="mode-act">🔊 複習</div>
-        <div class="mode-where">點字卡聽發音</div>
+  <!-- Word 1 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Optimize</span>
+        <span class="pos">v.</span>
       </div>
-      <div class="mode-card">
-        <div class="mode-time">5'</div>
-        <div class="mode-act">✏️ 考試</div>
-        <div class="mode-where">直接跳測驗</div>
-      </div>
-      <div class="mode-card">
-        <div class="mode-time">10'</div>
-        <div class="mode-act">📖 學習</div>
-        <div class="mode-where">聽句子 + 測驗</div>
-      </div>
+      <span class="ipa">/ˈɑːp.tə.maɪz/</span>
     </div>
-    <div class="principle-note">
-      每頁獨立，不需按順序。<br>
-      <strong>不需要準備，打開就能開始。</strong>
+    <div class="meaning">優化、使完善、發揮最高效能</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>op-ti-mize</strong>: <strong>op</strong> (短音 o /ɑːp/) + <strong>ti</strong> (輕讀 /tə/) + <strong>mize</strong> (長音 i /maɪz/，字尾 e 不發音)。
+    </div>
+
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>源自拉丁語 <em>optimus</em>（最好的、最佳的）。</li>
+        <li><strong>構詞分析：</strong><strong>optim-</strong>（最優的）+ <strong>-ize</strong>（動詞字尾，表示使成為...）。</li>
+        <li><strong>家族字延伸：</strong><strong>Optimal</strong> (adj. 最佳的), <strong>Optimism</strong> (n. 樂觀主義), <strong>Optimization</strong> (n. 最佳化)。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-en">"We need to <strong>optimize</strong> the API query structure to minimize server response time."</div>
+      <div class="example-zh">「我們需要優化 API 查詢結構，以將伺服器回應時間降至最低。」</div>
     </div>
   </div>
 
-  <!-- work series -->
-  <div class="accordion">
-    <button class="acc-toggle" onclick="toggle(this)">
-      <span>💼 工作系列 <span class="acc-meta">17 篇</span></span>
-      <span class="acc-arrow">▾</span>
-    </button>
-    <div class="acc-body">
-      <a class="list-item" href="daily_english_20260918.html">
-        <div class="item-left">
-          <div class="item-date">09/18 週五</div>
-          <div class="item-topic">系統優化・數據差異・專案實施 (Optimize / Discrepancy / Implement)</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260814.html">
-        <div class="item-left">
-          <div class="item-date">08/14 週四</div>
-          <div class="item-topic">案例收錄收尾・外鍵修正・讓步句型</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260812.html">
-        <div class="item-left">
-          <div class="item-date">08/12 週三</div>
-          <div class="item-topic">Supabase Cutover 完成・六項驗收全過・因果句型</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260804.html">
-        <div class="item-left">
-          <div class="item-date">08/04 週二</div>
-          <div class="item-topic">雙線路測試修正・Supabase Preview・現在完成式</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260803.html">
-        <div class="item-left">
-          <div class="item-date">08/03 週一</div>
-          <div class="item-topic">資料庫權限修補・被動語態・字首字根</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260625.html">
-        <div class="item-left">
-          <div class="item-date">06/25 週四</div>
-          <div class="item-topic">方案摘要・斷字修正・手機短句發音</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260624.html">
-        <div class="item-left">
-          <div class="item-date">06/24 週三</div>
-          <div class="item-topic">GitHub 工作流 × PR 流程</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260623.html">
-        <div class="item-left">
-          <div class="item-date">06/23 週二</div>
-          <div class="item-topic">交接盤點・資料調查・Why/Because 句型</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260622.html">
-        <div class="item-left">
-          <div class="item-date">06/22 週一</div>
-          <div class="item-topic">汙染防護・Haiku 省成本・Past Simple</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260616.html">
-        <div class="item-left">
-          <div class="item-date">06/16 週一</div>
-          <div class="item-topic">AI Agent 設計・命名討論・Past Simple</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260611.html">
-        <div class="item-left">
-          <div class="item-date">06/11 週四</div>
-          <div class="item-topic">資料除錯・儀表板換色・簡報製作</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260609.html">
-        <div class="item-left">
-          <div class="item-date">06/09 週二</div>
-          <div class="item-topic">診斷工具上線・員工規模推算・爬蟲研究</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260608.html">
-        <div class="item-left">
-          <div class="item-date">06/08 週一</div>
-          <div class="item-topic">AI分類・語意搜尋升級・篩選修復</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260605.html">
-        <div class="item-left">
-          <div class="item-date">06/05 週五</div>
-          <div class="item-topic">缺口矩陣・競爭態勢・Present Simple</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260604.html">
-        <div class="item-left">
-          <div class="item-date">06/04 週四</div>
-          <div class="item-topic">Strategy Guide・ROI 試算・統編批次補查</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260603.html">
-        <div class="item-left">
-          <div class="item-date">06/03 週三</div>
-          <div class="item-topic">測試缺口・語意搜尋・規格書範本</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="daily_english_20260602.html">
-        <div class="item-left">
-          <div class="item-date">06/02 週二</div>
-          <div class="item-topic">第五輪測試・策略修正・踩煞車</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
+  <!-- Word 2 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Discrepancy</span>
+        <span class="pos">n.</span>
+      </div>
+      <span class="ipa">/dɪˈskrep.ən.si/</span>
+    </div>
+    <div class="meaning">差異、不一致、矛盾之處</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>dis-crep-an-cy</strong>: <strong>dis</strong> (短音 /dɪ/) + <strong>crep</strong> (重音在此 /skrep/) + <strong>an</strong> (弱化 /ən/) + <strong>cy</strong> (輕音 /si/)。
+    </div>
+
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>源自拉丁語 <em>discrepare</em>（發出不和諧的聲音、不合調）。由 <em>crepare</em>（喀噠響、發出裂聲）演變而來。</li>
+        <li><strong>構詞分析：</strong><strong>dis-</strong>（分離、相反）+ <strong>crep-</strong>（發聲/破裂）+ <strong>-ancy</strong>（抽象名詞字尾）。</li>
+        <li><strong>家族字延伸：</strong><strong>Discrepant</strong> (adj. 有差異的、不符的)。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-en">"The technical audit revealed a data <strong>discrepancy</strong> between the legacy platform and the new repository."</div>
+      <div class="example-zh">「技術稽核發現了舊平台與新資料庫之間的數據不一致。」</div>
     </div>
   </div>
 
-  <!-- leisure series -->
-  <div class="accordion">
-    <button class="acc-toggle" onclick="toggle(this)">
-      <span>🎮 休閒系列 <span class="acc-meta">4 個主題</span></span>
-      <span class="acc-arrow">▾</span>
-    </button>
-    <div class="acc-body">
+  <!-- Word 3 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Implement</span>
+        <span class="pos">v.</span>
+      </div>
+      <span class="ipa">/ˈɪm.plə.ment/</span>
+    </div>
+    <div class="meaning">實施、貫徹、系統落地執行</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>im-ple-ment</strong>: <strong>im</strong> (重音前置 /ˈɪm/) + <strong>ple</strong> (輕音 /plə/) + <strong>ment</strong> (/ment/)。
+    </div>
 
-      <div class="sub-label">📖 Headway Elementary</div>
-      <a class="list-item" href="headway_u3_time_off.html">
-        <div class="item-left">
-          <div class="item-date">Unit 3</div>
-          <div class="item-topic">Time off — 休閒時光・Present Simple・頻率副詞</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>源自晚期拉丁語 <em>implementum</em>（填滿、補充），來自拉丁動詞 <em>implere</em>（裝滿、完成）。</li>
+        <li><strong>構詞分析：</strong><strong>im-</strong>（in- 在...內、使其）+ <strong>ple-</strong>（字根：充滿、滿的，同 complete / plenty）+ <strong>-ment</strong>（動作或產物）。</li>
+        <li><strong>家族字延伸：</strong><strong>Implementation</strong> (n. 實施、建置上線), <strong>Implementable</strong> (adj. 可落實執行的)。</li>
+      </ul>
+    </div>
 
-      <div class="sub-label">🤖 變形金剛 Transformers</div>
-      <a class="list-item" href="transformers_constructicons.html">
-        <div class="item-left">
-          <div class="item-date">建造者軍團</div>
-          <div class="item-topic">Constructicons — 六種工程車輛・合體成蹂躪者</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-
-      <div class="sub-label">⚡ 希臘神話 Greek Mythology</div>
-      <a class="list-item" href="greek_myth_hercules_ep1.html">
-        <div class="item-left">
-          <div class="item-date">EP 1 / 3</div>
-          <div class="item-topic">Hercules 大力神：身世・悲劇・贖罪</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="greek_myth_hercules_ep2.html">
-        <div class="item-left">
-          <div class="item-date">EP 2 / 3</div>
-          <div class="item-topic">十二試煉 第一～六：獅子・九頭蛇・金鹿・野豬・牛棚・怪鳥</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="greek_myth_hercules_ep3.html">
-        <div class="item-left">
-          <div class="item-date">EP 3 / 3</div>
-          <div class="item-topic">試煉後半・柴堆・封神 — underworld / apotheosis / pyre</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-
-      <div class="sub-label">📚 生活主題 Daily Life</div>
-      <a class="list-item" href="leisure_fruit.html">
-        <div class="item-left">
-          <div class="item-date">🍎 水果</div>
-          <div class="item-topic">Fruits — harvest / cultivate / export / seasonal / perishable</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="leisure_vegetable.html">
-        <div class="item-left">
-          <div class="item-date">🥦 蔬菜</div>
-          <div class="item-topic">Vegetables — organic / distribute / yield / procurement / surplus</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-      <a class="list-item" href="leisure_esports.html">
-        <div class="item-left">
-          <div class="item-date">🎮 電競</div>
-          <div class="item-topic">Esports — revenue / sponsor / broadcast / viewership / franchise</div>
-        </div>
-        <span class="item-arrow">›</span>
-      </a>
-
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-en">"Our engineering team is scheduled to <strong>implement</strong> the new data synchronization rules next week."</div>
+      <div class="example-zh">「我們的工程團隊預計於下週實施新的資料同步規則。」</div>
     </div>
   </div>
 
+  <!-- Synthesis Section -->
+  <div class="sprint-summary">
+    <h2>🎯 整合複習句型 (Synthesis Pattern)</h2>
+    <div class="example-en">
+      "To resolve the system <strong>discrepancy</strong>, we must <strong>optimize</strong> our data pipeline and <strong>implement</strong> strict validation rules."
+    </div>
+    <div class="example-zh" style="margin-top: 0.5rem;">
+      （為了消除系統的不一致，我們必須優化資料傳輸管道，並實施嚴格的驗證規則。）
+    </div>
+  </div>
+
+  <footer>
+    <a href="index.html" class="back-home">← 回到主選單</a>
+    <p style="margin-top: 1rem;">Daily English Learning Repository &copy; 2026.</p>
+  </footer>
 </div>
 
-<footer class="site-footer">
-  <a href="https://github.com/Pcc329/daily-english">daily-english</a> is maintained by
-  <a href="https://github.com/Pcc329">Pcc329</a>
-</footer>
-
-<script>
-function toggle(btn) {
-  btn.classList.toggle('open');
-  const body = btn.nextElementSibling;
-  body.classList.toggle('open');
-}
-</script>
 </body>
 </html>
