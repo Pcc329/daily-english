@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily English - 2026-09-20</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --highlight: #f59e0b;
+      --code-bg: #0b1120;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; display: flex; justify-content: center; }
+    .container { max-width: 800px; width: 100%; }
+    header { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .badge { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; border: 1px solid rgba(56, 189, 248, 0.3); }
+    h1 { font-size: 1.875rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--text-muted); font-size: 1rem; }
+    
+    .audio-control-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .speed-label { font-size: 0.9rem; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+    .speed-slider-group { display: flex; align-items: center; gap: 0.75rem; }
+    .speed-slider { accent-color: var(--accent); cursor: pointer; }
+    .speed-val { font-family: monospace; font-size: 0.95rem; min-width: 40px; color: var(--highlight); font-weight: 700; }
+    
+    .vocab-card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .vocab-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 0.75rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.75rem; }
+    .word-group { display: flex; align-items: center; gap: 0.75rem; }
+    .word { font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+    .pos { color: var(--highlight); font-style: italic; font-weight: 600; }
+    .ipa { font-family: monospace; color: var(--text-muted); }
+    .meaning { font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+    
+    .speak-btn {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .speak-btn:hover { background: var(--accent); color: var(--bg); }
+    
+    .section-title { font-weight: 700; color: var(--accent); margin-top: 0.75rem; font-size: 0.95rem; }
+    .detail-block { background: var(--code-bg); border-radius: 6px; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.925rem; color: #e2e8f0; border-left: 3px solid var(--accent); }
+    ul { list-style: none; }
+    li { margin-bottom: 0.4rem; }
+    .example-wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+    .example-en { font-weight: 500; color: #cbd5e1; }
+    .example-zh { color: var(--text-muted); font-size: 0.875rem; margin-top: 0.25rem; }
+    .sprint-summary { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid var(--accent); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+    .sprint-summary h2 { font-size: 1.25rem; color: var(--accent); margin-bottom: 0.75rem; }
+    footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+    .back-home { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <span class="badge">Target: TOEIC 700+</span>
+    <h1>Daily English Sprint: Day 38</h1>
+    <p class="subtitle">系統相容性・資料庫遷移・專案緊急備案 (2026-09-20)</p>
+  </header>
+
+  <!-- 語速控制器 -->
+  <div class="audio-control-bar">
+    <div class="speed-label">🎧 發音語速調節 (Speech Speed)</div>
+    <div class="speed-slider-group">
+      <input type="range" class="speed-slider" id="speedRate" min="0.6" max="1.3" step="0.1" value="0.9">
+      <span class="speed-val" id="speedDisplay">0.9x</span>
+    </div>
+  </div>
+
+  <!-- Word 1 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Compatible</span>
+        <button class="speak-btn" onclick="speakText('compatible')">🔊 朗讀</button>
+        <span class="pos">adj.</span>
+      </div>
+      <span class="ipa">/kəmˈpæt.ə.bəl/</span>
+    </div>
+    <div class="meaning">相容的、可共存的、相配的</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>com-pat-i-ble</strong>: <strong>com</strong> (/kəm/) + <strong>pat</strong> (/pæt/) + <strong>i</strong> (/ə/) + <strong>ble</strong> (/bəl/)。
+    </div>
+
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>拉丁語 <em>compati</em>（共同承受）。</li>
+        <li><strong>分析：</strong><strong>com-</strong>（共同）+ <strong>pati-</strong>（忍受/承受）+ <strong>-ible</strong>（能夠...的）。</li>
+        <li><strong>衍生字：</strong><strong>Compatibility</strong> (n. 相容性), <strong>Incompatible</strong> (adj. 不相容的)。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-wrap">
+        <div class="example-en">"We must verify whether the new database driver is <strong>compatible</strong> with the existing operating system."</div>
+        <button class="speak-btn" onclick="speakText('We must verify whether the new database driver is compatible with the existing operating system.')">🔊</button>
+      </div>
+      <div class="example-zh">「我們必須驗證新的資料庫驅動程式是否與現有的作業系統相容。」</div>
+    </div>
+  </div>
+
+  <!-- Word 2 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Migrate</span>
+        <button class="speak-btn" onclick="speakText('migrate')">🔊 朗讀</button>
+        <span class="pos">v.</span>
+      </div>
+      <span class="ipa">/ˈmaɪ.ɡreɪt/</span>
+    </div>
+    <div class="meaning">遷移、系統/資料搬遷轉移</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>mi-grate</strong>: <strong>mi</strong> (/maɪ/) + <strong>grate</strong> (/ɡreɪt/)。
+    </div>
+
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>拉丁語 <em>migrare</em>（搬遷、遷徙）。</li>
+        <li><strong>分析：</strong><strong>migr-</strong>（移動/遷動）+ <strong>-ate</strong>（動詞字尾）。</li>
+        <li><strong>衍生字：</strong><strong>Migration</strong> (n. 遷移/移轉工程), <strong>Migratory</strong> (adj. 遷徙的)。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-wrap">
+        <div class="example-en">"The project timeline requires us to <strong>migrate</strong> five thousand customer records to the cloud repository by Friday."</div>
+        <button class="speak-btn" onclick="speakText('The project timeline requires us to migrate five thousand customer records to the cloud repository by Friday.')">🔊</button>
+      </div>
+      <div class="example-zh">「專案時程要求我們在週五前將五千筆客戶紀錄遷移至雲端儲存庫。」</div>
+    </div>
+  </div>
+
+  <!-- Word 3 -->
+  <div class="vocab-card">
+    <div class="vocab-header">
+      <div class="word-group">
+        <span class="word">Contingency</span>
+        <button class="speak-btn" onclick="speakText('contingency')">🔊 朗讀</button>
+        <span class="pos">n.</span>
+      </div>
+      <span class="ipa">/kənˈtɪn.dʒən.si/</span>
+    </div>
+    <div class="meaning">意外事故、緊急情況、備案措施</div>
+    
+    <div class="section-title">🔊 自然發音拆解</div>
+    <div class="detail-block">
+      <strong>con-tin-gen-cy</strong>: <strong>con</strong> (/kən/) + <strong>tin</strong> (/tɪn/) + <strong>gen</strong> (/dʒən/) + <strong>cy</strong> (/si/)。
+    </div>
+
+    <div class="section-title">🧬 字根字首與來源</div>
+    <div class="detail-block">
+      <ul>
+        <li><strong>字源：</strong>拉丁語 <em>contingere</em>（碰觸、偶發），由 <em>con-</em>（接觸）+ <em>tangere</em>（觸碰）組成。</li>
+        <li><strong>分析：</strong><strong>con-</strong>（共同）+ <strong>ting-</strong>（觸及/發生）+ <strong>-ency</strong>（名詞尾）。</li>
+        <li><strong>衍生字：</strong><strong>Contingent</strong> (adj. 視情況而定的)。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">💼 PM 實戰例句與情境</div>
+    <div class="detail-block">
+      <div class="example-wrap">
+        <div class="example-en">"As a risk management measure, the PM prepared a <strong>contingency</strong> plan in case the API connection fails."</div>
+        <button class="speak-btn" onclick="speakText('As a risk management measure, the PM prepared a contingency plan in case the API connection fails.')">🔊</button>
+      </div>
+      <div class="example-zh">「作為風險管理措施，專案經理準備了應急備案，以防 API 連線失敗。」</div>
+    </div>
+  </div>
+
+  <!-- Synthesis Section -->
+  <div class="sprint-summary">
+    <h2>🎯 整合複習句型 (Synthesis Pattern)</h2>
+    <div class="example-wrap">
+      <div class="example-en">
+        "Before we <strong>migrate</strong> the database, we must ensure every module is <strong>compatible</strong> and have a solid <strong>contingency</strong> plan."
+      </div>
+      <button class="speak-btn" onclick="speakText('Before we migrate the database, we must ensure every module is compatible and have a solid contingency plan.')">🔊</button>
+    </div>
+    <div class="example-zh" style="margin-top: 0.5rem;">
+      （在我們遷移資料庫之前，必須確保每個模組均能相容，並備妥完善的緊急應變方案。）
+    </div>
+  </div>
+
+  <footer>
+    <a href="index.html" class="back-home">← 回到主選單</a>
+    <p style="margin-top: 1rem;">Daily English Learning Repository &copy; 2026.</p>
+  </footer>
+</div>
+
+<script>
+  const speedSlider = document.getElementById('speedRate');
+  const speedDisplay = document.getElementById('speedDisplay');
+
+  speedSlider.addEventListener('input', (e) => {
+    speedDisplay.textContent = e.target.value + 'x';
+  });
+
+  function speakText(text) {
+    if (!('speechSynthesis' in window)) {
+      alert('您的瀏覽器不支援語音合成功能');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = parseFloat(speedSlider.value);
+    window.speechSynthesis.speak(utterance);
+  }
+</script>
+</body>
+</html>
