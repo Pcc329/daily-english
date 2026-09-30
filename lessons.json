@@ -1,5 +1,109 @@
 [
   {
+    "date": "2026-09-27",
+    "day_num": 45,
+    "weekday_zh": "09/27 週日",
+    "topic_zh": "資安鐵三角・核心三原則 (Confidentiality / Integrity / Availability)",
+    "words": [
+      {
+        "word": "Confidentiality",
+        "pos": "n.",
+        "ipa": "/ˌkɑːn.fə.den.ʃiˈæl.ə.t̬i/",
+        "meaning": "機密性、保密性",
+        "phonics": "<strong>con-fi-den-ti-al-i-ty</strong>: 次重音在首音節 /kɑːn/，主重音在第五音節 /æl/，-tial- 發 /ʃəl/ 轉音。",
+        "roots": "<em>con-</em>（完全）+ <em>fid-</em>（相信/信任，同 fidelity）+ <em>-ity</em>（名詞尾）。字面原義為「全心交付信任的保密狀態」。",
+        "toeic_listening": "聽力 Part 3/4 主管交代重要文檔不可外洩時高頻出現；形容詞 confidential（機密的）亦常考。",
+        "toeic_reading": "<strong>strict confidentiality</strong>（嚴格保密）、<strong>breach of confidentiality</strong>（違反保密協定/洩密）、<strong>Confidentiality Agreement</strong>（NDA 保密合約）。",
+        "example_en": "Data confidentiality is strictly enforced through end-to-end encryption and role-based access control.",
+        "example_zh": "數據機密性透過端對端加密與基於角色的存取控制來嚴格落實。",
+        "chunks": "Data <span class='stress'>con-fi-den-ti-AL-i-ty</span> is strictly enforced <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>through <span class='stress'>end-to-end en-CRYP-tion</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>and <span class='stress'>role-based access control</span>."
+      },
+      {
+        "word": "Integrity",
+        "pos": "n.",
+        "ipa": "/ɪnˈteɡ.rə.t̬i/",
+        "meaning": "完整性、未受破壞、誠信",
+        "phonics": "<strong>in-teg-ri-ty</strong>: 重音在第二音節短音 /ˈteɡ/，字尾 -ty 弱化為美式閃音 /t̬i/。",
+        "roots": "<em>in-</em>（未）+ <em>teg- / tag-</em>（觸碰，源自 tangere）+ <em>-ity</em>。原義為「未被觸碰碰壞的完好狀態」，專指數據未受篡改。",
+        "toeic_listening": "注意第二音節的重音爆發；在 Part 4 系統數據回報或品管查核中極為常見。",
+        "toeic_reading": "<strong>maintain data integrity</strong>（維護資料完整性）、<strong>compromise the integrity of...</strong>（損害…的完整性）。空格在動詞與 of 之間必選名詞。",
+        "example_en": "Automated checksum verification is executed nightly to safeguard the integrity of transactional records.",
+        "example_zh": "系統每晚執行自動校驗碼比對，以維護交易紀錄的完整性。",
+        "chunks": "Automated <span class='stress'>CHECK-sum verification</span> is executed nightly <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>to safeguard the <span class='stress'>in-TEG-ri-ty</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>of <span class='stress'>trans-AC-tion-al records</span>."
+      },
+      {
+        "word": "Availability",
+        "pos": "n.",
+        "ipa": "/əˌveɪ.ləˈbɪl.ə.t̬i/",
+        "meaning": "可用性、可使用性、系統運作時間",
+        "phonics": "<strong>a-vail-a-bil-i-ty</strong>: 次重音在 /veɪ/，主重音落在第四音節 /bɪl/。",
+        "roots": "<em>a-</em>（朝向）+ <em>val-</em>（力量/價值，同 valid）+ <em>-ability</em>。原指「具備發揮力量與價值的可取用狀態」，系統上即 uptime 指標。",
+        "toeic_listening": "商務對話中常指「人的空檔」（availability for a meeting），在 IT 技術情境則專指「服務不中斷的可用率」。",
+        "toeic_reading": "<strong>system availability</strong>（系統可用性）、<strong>guarantee 99.9% availability</strong>（保證 99.9% 可用率）。",
+        "example_en": "Deploying redundant failover clusters guarantees high availability without service disruptions.",
+        "example_zh": "部署備援容錯移轉叢集可保證系統的高可用性，避免服務中斷。",
+        "chunks": "Deploying <span class='stress'>redundant FAIL-o-ver clusters</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>guarantees <span class='stress'>HIGH a-vail-a-bil-i-ty</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>without <span class='stress'>service dis-RUP-tions</span>."
+      }
+    ],
+    "synthesis": {
+      "en": "To establish a resilient infrastructure, our team balances confidentiality, data integrity, and system availability.",
+      "zh": "為了建立具備韌性的基礎架構，我們團隊在機密性、資料完整性與系統可用性之間取得平衡。",
+      "chunks": "To establish a <span class='stress'>re-SIL-ient infrastructure</span>, <span class='slash'>/</span> <span class='breathe'>💨換氣</span><br>our team balances <span class='stress'>con-fi-den-ti-AL-i-ty</span>, <span class='slash'>/</span> <span class='breathe'>💨換氣</span><br>data <span class='stress'>in-TEG-ri-ty</span>, and <span class='stress'>system a-vail-a-BIL-i-ty</span>."
+    }
+  },
+  {
+    "date": "2026-09-26",
+    "day_num": 44,
+    "weekday_zh": "09/26 週六",
+    "topic_zh": "延遲時間・資料吞吐・架構擴展 (Latency / Throughput / Scalable)",
+    "words": [
+      {
+        "word": "Latency",
+        "pos": "n.",
+        "ipa": "/ˈleɪ.tən.si/",
+        "meaning": "延遲時間、潛伏期、網路延遲",
+        "phonics": "<strong>la-ten-cy</strong>: <strong>la</strong> (/ˈleɪ/) + <strong>ten</strong> (/tən/) + <strong>cy</strong> (/si/)。雙元音 /eɪ/ 咬準，重音在前。",
+        "roots": "拉丁語 <em>latere</em>（隱藏、潛伏）+ <em>-ency</em>（抽象名詞字尾）。工程上指「發出指令到收到回應之間潛伏的時間差」。",
+        "toeic_listening": "常出現在 Part 3/4 技術簡報與客戶支援對話，注意 t 容易弱讀為輕音。",
+        "toeic_reading": "<strong>low / high latency</strong>（低／高延遲）、<strong>reduce network latency</strong>（降低網路延遲）。Part 7 伺服器評測常考關鍵字。",
+        "example_en": "Deploying edge caching significantly reduced database query latency for global users.",
+        "example_zh": "部署邊緣快取大幅降低了全球用戶的資料庫查詢延遲。",
+        "chunks": "Deploying edge caching <span class='stress'>sig-NIF-i-cant-ly reduced</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>database query latency <span class='stress'>for GLO-bal users</span>."
+      },
+      {
+        "word": "Throughput",
+        "pos": "n.",
+        "ipa": "/ˈθruː.pʊt/",
+        "meaning": "吞吐量、生產量、單位時間處理能力",
+        "phonics": "<strong>through-put</strong>: <strong>through</strong> (/θruː/ 咬舌音 + 長母音) + <strong>put</strong> (/pʊt/)。重音在前。",
+        "roots": "由 <em>through</em>（穿過）+ <em>put</em>（放置）組成。原為工廠生產線產能，現代延伸為「網路或資料庫每秒通過的資料總量」。",
+        "toeic_listening": "首音 /θ/ 必須咬舌，避免與 'true' 混淆；聽力 Part 4 廠房或系統報告高頻出現。",
+        "toeic_reading": "<strong>maximize throughput</strong>（最大化吞吐量）、<strong>data / transaction throughput</strong>（資料／交易吞吐量）。Part 5 常考詞性辨析。",
+        "example_en": "The optimized indexing strategy increased database transaction throughput by 40%.",
+        "example_zh": "優化後的索引策略讓資料庫交易吞吐量提升了 40%。",
+        "chunks": "The optimized <span class='stress'>IN-dex-ing strategy</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>increased database transaction <span class='stress'>THROUGH-put by forty percent</span>."
+      },
+      {
+        "word": "Scalable",
+        "pos": "adj.",
+        "ipa": "/ˈskeɪ.lə.bəl/",
+        "meaning": "具擴展性的、可按比例擴充的",
+        "phonics": "<strong>scal-a-ble</strong>: <strong>scale</strong> (/skeɪl/) + <strong>able</strong> (/ə.bəl/)。清脆的 /sk/ 接長雙元音 /eɪ/。",
+        "roots": "拉丁語 <em>scala</em>（梯子、刻度）+ <em>-able</em>（可…的）。原義為「可沿著階梯攀爬調整的」，現代指「當流量激增時能彈性擴充資源的系統」。",
+        "toeic_listening": "尾音 /-bəl/ 輕讀帶過；常與 cloud architecture 或 business model 一起出現。",
+        "toeic_reading": "<strong>scalable architecture / solution</strong>（具擴展性的架構／方案）、<strong>highly scalable</strong>（高度可擴充的）。",
+        "example_en": "We must select a scalable database solution to support anticipated business growth.",
+        "example_zh": "我們必須選擇具備高度擴展性的資料庫方案，以支援預期的業務成長。",
+        "chunks": "We must select a <span class='stress'>SCA-la-ble database solution</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>to support <span class='stress'>an-TI-ci-pat-ed business growth</span>."
+      }
+    ],
+    "synthesis": {
+      "en": "To maintain high throughput and low latency, we must implement a scalable cloud architecture.",
+      "zh": "為了維持高吞吐量與低延遲，我們必須導入具備高擴展性的雲端架構。",
+      "chunks": "To maintain <span class='stress'>high THROUGH-put and low latency</span>, <span class='slash'>/</span> <span class='breathe'>💨換氣</span><br>we must implement a <span class='stress'>SCA-la-ble cloud architecture</span>."
+    }
+  },
+  {
     "date": "2026-09-25",
     "day_num": 43,
     "weekday_zh": "09/25 週五",
