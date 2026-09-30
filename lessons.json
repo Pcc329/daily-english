@@ -1,0 +1,54 @@
+[
+  {
+    "date": "2026-09-25",
+    "day_num": 43,
+    "weekday_zh": "09/25 週五",
+    "topic_zh": "批次處理・觸發機制・資料同步 (Batch / Trigger / Synchronize)",
+    "words": [
+      {
+        "word": "Batch",
+        "pos": "n. / adj.",
+        "ipa": "/bætʃ/",
+        "meaning": "一批、批次、批次處理的",
+        "phonics": "<strong>batch</strong>: 短母音 /æ/ + 破擦音 /tʃ/。單音節，發音短促有力。",
+        "roots": "古英語 <em>bæcce</em>（一次烘烤出爐的麵包量），現代延伸為「整批處理的一組工作或資料」。",
+        "toeic_listening": "Part 4 常出現在倉儲物流或系統離峰排程中（如 'batch process'）。",
+        "toeic_reading": "<strong>batch processing</strong>（批次處理）、<strong>a batch of orders</strong>（一批訂單）。常考名詞修飾名詞用法。",
+        "example_en": "The system runs a nightly batch job to process all customer transactions.",
+        "example_zh": "系統會在夜間執行批次排程，以處理所有的客戶交易。",
+        "chunks": "The system runs <span class='stress'>a NIGHT-ly BATCH job</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>to process all <span class='stress'>customer trans-AC-tions</span>."
+      },
+      {
+        "word": "Trigger",
+        "pos": "v. / n.",
+        "ipa": "/ˈtrɪɡ.ɚ/",
+        "meaning": "觸發、引發 (v.)；觸發器、扳機 (n.)",
+        "phonics": "<strong>trig-ger</strong>: <strong>trig</strong> (/trɪɡ/) + <strong>ger</strong> (/ɚ/)。注意雙寫 g 發硬音 /ɡ/。",
+        "roots": "源自荷蘭語 <em>trekker</em>（拉動之物/扳機），在資料庫中專指「當特定事件發生時自動執行的預存程序」。",
+        "toeic_listening": "重音在前音節 /ˈtrɪɡ/，常出現在 Part 3 討論警報或自動化機制時。",
+        "toeic_reading": "<strong>trigger an alert / a response</strong>（觸發警報／引發反應）。在 Part 7 常作為引起後續事件的核心因果動詞。",
+        "example_en": "Any unauthorized login attempt will instantly trigger a security notification.",
+        "example_zh": "任何未經授權的登入嘗試都會立即觸發資安警報通知。",
+        "chunks": "Any unauthorized <span class='stress'>LO-gin attempt</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>will instantly <span class='stress'>TRIG-ger a security notification</span>."
+      },
+      {
+        "word": "Synchronize",
+        "pos": "v.",
+        "ipa": "/ˈsɪŋ.krə.naɪz/",
+        "meaning": "使同步、同時發生 (常簡稱 sync)",
+        "phonics": "<strong>syn-chro-nize</strong>: <strong>syn</strong> (/sɪŋ/) + <strong>chro</strong> (/krə/) + <strong>nize</strong> (/naɪz/)。ch 發 /k/ 音。",
+        "roots": "希臘語 <em>syn-</em>（共同、一起）+ <em>chronos</em>（時間）+ <em>-ize</em>（使成為）。字面原義為「置於同一個時間點」。",
+        "toeic_listening": "口語常直接說 <strong>sync</strong> /sɪŋk/（如 'sync the database'）。聽到 sync 要立即反應即為 synchronize。",
+        "toeic_reading": "<strong>synchronize data across devices</strong>（跨裝置同步資料）、<strong>in sync with</strong>（與…同步）。",
+        "example_en": "Our background service will synchronize local records with the remote database every hour.",
+        "example_zh": "我們的背景服務每小時都會將本地紀錄與遠端資料庫進行同步。",
+        "chunks": "Our background service <span class='stress'>will SYN-chro-nize local records</span> <span class='slash'>/</span> <span class='breathe'>💨吸氣</span><br>with the <span class='stress'>remote DA-ta-base</span> every hour."
+      }
+    ],
+    "synthesis": {
+      "en": "We set up an automated database trigger to synchronize each batch of records seamlessly.",
+      "zh": "我們設定了自動化資料庫觸發器，以無縫同步每一批資料紀錄。",
+      "chunks": "We set up an <span class='stress'>automated database TRIG-ger</span> <span class='slash'>/</span> <span class='breathe'>💨換氣</span><br>to synchronize each <span class='stress'>BATCH of records SEAM-less-ly</span>."
+    }
+  }
+]
