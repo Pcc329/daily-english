@@ -195,6 +195,13 @@ if os.path.exists("index.html"):
     pattern = r'(<!-- AUTO_WORK_START -->)(.*?)(<!-- AUTO_WORK_END -->)'
     if re.search(pattern, content, re.DOTALL):
         content = re.sub(pattern, f"\\1\n{links_html}      \\3", content, flags=re.DOTALL)
+        
+        # 自動統計工作系列連結總數，並更新上方「XX 篇」
+        work_match = re.search(r'💼 工作系列.*?</button>\s*<div class="acc-body">(.*?)</div>\s*</div>', content, re.DOTALL)
+        if work_match:
+            total_articles = len(re.findall(r'href="daily_english_', work_match.group(1)))
+            content = re.sub(r'(<span>💼 工作系列 <span class="acc-meta">)\d+( 篇</span></span>)', f'\\g<1>{total_articles}\\g<2>', content)
+
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(content)
-        print("  ✓ index.html 連結已自動更新！")
+        print("  ✓ index.html 連結與篇數已自動更新！")
