@@ -155,7 +155,7 @@ for item in lessons:
       </div>
       <div class="example-zh">「{w["example_zh"]}」</div>
     </div>
-    <div class="chunk-title">🗣️️ 意群跟讀拆解（三段換氣法）</div>
+    <div class="chunk-title">🗣️ 意群跟讀拆解（三段換氣法）</div>
     <div class="chunk-block">{w["chunks"]}</div>
   </div>
 """
@@ -196,12 +196,18 @@ if os.path.exists("index.html"):
     if re.search(pattern, content, re.DOTALL):
         content = re.sub(pattern, f"\\1\n{links_html}      \\3", content, flags=re.DOTALL)
         
-        # 自動統計工作系列連結總數，並更新上方「XX 篇」
-        work_match = re.search(r'💼 工作系列.*?</button>\s*<div class="acc-body">(.*?)</div>\s*</div>', content, re.DOTALL)
-        if work_match:
-            total_articles = len(re.findall(r'href="daily_english_', work_match.group(1)))
+        # 穩健型切片：擷取「工作系列」整塊內容，避開巢狀 <div> 提早閉合
+        if '💼 工作系列' in content:
+            work_part = content.split('💼 工作系列')[1]
+            end_pos = work_part.find('<div class="accordion"')
+            if end_pos == -1:
+                end_pos = work_part.find('<footer>')
+            if end_pos != -1:
+                work_part = work_part[:end_pos]
+            
+            total_articles = len(re.findall(r'href="daily_english_', work_part))
             content = re.sub(r'(<span>💼 工作系列 <span class="acc-meta">)\d+( 篇</span></span>)', f'\\g<1>{total_articles}\\g<2>', content)
 
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(content)
-        print("  ✓ index.html 連結與篇數已自動更新！")
+        print(f"  ✓ index.html 連結與篇數已更新，共累計 {total_articles} 篇！")
